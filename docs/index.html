@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VeloCity Fibre - Investor Portal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-navy: #001F5C;
+            --accent-burgundy: #8B3A3A;
+            --secondary-gray: #9CA3AF;
+            --light-gray: #F3F4F6;
+            --dark-text: #1F2937;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--primary-navy) 0%, #0B1E3F 100%);
+            color: white;
+            padding: 50px 40px;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 50px;
+            box-shadow: 0 10px 30px rgba(0, 31, 92, 0.2);
+        }
+
+        .logo-mark {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, var(--primary-navy), var(--accent-burgundy));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+        }
+
+        .header p {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 5px;
+        }
+
+        .header .subtitle {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            font-style: italic;
+            margin-top: 15px;
+        }
+
+        /* Main Content */
+        .content {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+        }
+
+        .content h2 {
+            color: var(--primary-navy);
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent-burgundy);
+            font-size: 28px;
+        }
+
+        .content p {
+            color: var(--dark-text);
+            margin-bottom: 20px;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        /* Documents Grid */
+        .documents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .document-card {
+            background: linear-gradient(135deg, var(--light-gray) 0%, #fff 100%);
+            border: 2px solid var(--primary-navy);
+            border-radius: 10px;
+            padding: 25px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 2px 8px rgba(0, 31, 92, 0.1);
+        }
+
+        .document-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0, 31, 92, 0.2);
+            border-color: var(--accent-burgundy);
+        }
+
+        .document-card .icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .document-card h3 {
+            color: var(--primary-navy);
+            font-size: 16px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .document-card p {
+            color: var(--secondary-gray);
+            font-size: 14px;
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+
+        .document-card .badge {
+            display: inline-block;
+            background: var(--accent-burgundy);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            width: fit-content;
+        }
+
+        .document-card .cta {
+            color: var(--primary-navy);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            margin-top: auto;
+        }
+
+        .document-card .cta:after {
+            content: " →";
+            margin-left: 8px;
+        }
+
+        .document-card:hover .cta {
+            color: var(--accent-burgundy);
+        }
+
+        /* Info Section */
+        .info-section {
+            background: var(--light-gray);
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 4px solid var(--accent-burgundy);
+            margin-top: 30px;
+        }
+
+        .info-section h3 {
+            color: var(--primary-navy);
+            margin-bottom: 12px;
+            font-size: 16px;
+        }
+
+        .info-section p {
+            color: var(--dark-text);
+            font-size: 14px;
+            line-height: 1.7;
+            margin-bottom: 10px;
+        }
+
+        .info-section ul {
+            margin: 15px 0 15px 25px;
+            font-size: 14px;
+        }
+
+        .info-section li {
+            color: var(--dark-text);
+            margin-bottom: 8px;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary-navy);
+            color: white;
+            padding: 30px 40px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .footer p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+
+        .footer a {
+            color: #ffb6c1;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .footer .contact-info {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 13px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header {
+                padding: 30px 20px;
+            }
+
+            .header h1 {
+                font-size: 28px;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .documents-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo-mark">V</div>
+            <h1>VELOCITY FIBRE</h1>
+            <p>Connecting Communities at the Speed of Light</p>
+            <p class="subtitle">Infrastructure Investment Opportunity - 2025</p>
+        </div>
+
+        <!-- Welcome Section -->
+        <div class="content">
+            <h2>📊 Welcome to the VeloCity Investor Portal</h2>
+            <p>
+                VeloCity Fibre Networks is building essential digital infrastructure in South Africa's underserved township markets, generating exceptional yields (60.4%-77.1% annually) through a proven Build-Operate-Maintain model.
+            </p>
+            <p>
+                This portal provides access to our complete investor materials, from quick overviews to comprehensive financial analysis. All documents reflect our master financial model with realistic operational assumptions.
+            </p>
+
+            <!-- Documents Grid -->
+            <div class="documents-grid">
+                <!-- Quick Overview -->
+                <a href="https://github.com/VeloF2025/Innov8/blob/master/companies/VeloCity/projects/VeloCity/workspace/investor-materials/VELOCITY_COMPACT_INVESTOR_TEASER.md" target="_blank" class="document-card">
+                    <div class="icon">📄</div>
+                    <span class="badge">1-2 Pages</span>
+                    <h3>Master Teaser (Markdown)</h3>
+                    <p>Quick overview with all key metrics, market opportunity, and business model.</p>
+                    <span class="cta">View Document</span>
+                </a>
+
+                <!-- Branded HTML -->
+                <a href="../companies/VeloCity/projects/VeloCity/workspace/investor-materials/VELOCITY_BRANDED_INVESTOR_TEASER.html" class="document-card">
+                    <div class="icon">🎨</div>
+                    <span class="badge">Interactive</span>
+                    <h3>Branded HTML Presentation</h3>
+                    <p>Professional interactive presentation with full branding, responsive design, and all company details.</p>
+                    <span class="cta">View Presentation</span>
+                </a>
+
+                <!-- Print Version -->
+                <a href="../companies/VeloCity/projects/VeloCity/workspace/investor-materials/VELOCITY_PRINT_OPTIMIZED_TEASER.html" class="document-card">
+                    <div class="icon">🖨️</div>
+                    <span class="badge">Print Ready</span>
+                    <h3>Print-Optimized Teaser</h3>
+                    <p>A4 landscape format optimized for PDF generation. Use Ctrl+P to print to PDF.</p>
+                    <span class="cta">View Print Version</span>
+                </a>
+
+                <!-- Email Template -->
+                <a href="../companies/VeloCity/projects/VeloCity/workspace/investor-materials/EMAIL_TEMPLATE_INVESTOR_OUTREACH.html" class="document-card">
+                    <div class="icon">✉️</div>
+                    <span class="badge">Email</span>
+                    <h3>Email Template</h3>
+                    <p>Professional branded email template for investor outreach with embedded branding and key metrics.</p>
+                    <span class="cta">View Template</span>
+                </a>
+
+                <!-- Comprehensive Analysis -->
+                <a href="https://github.com/VeloF2025/Innov8/blob/master/companies/VeloCity/projects/VeloCity/workspace/investor-materials/VELOCITY_INFRASTRUCTURE_YIELD_INVESTMENT.md" target="_blank" class="document-card">
+                    <div class="icon">📊</div>
+                    <span class="badge">Deep Dive</span>
+                    <h3>Comprehensive Analysis</h3>
+                    <p>Full financial model, scenario analysis, market research, and risk assessment for due diligence.</p>
+                    <span class="cta">View Analysis</span>
+                </a>
+
+                <!-- Brand Guide -->
+                <a href="https://github.com/VeloF2025/Innov8/blob/master/companies/VeloCity/projects/VeloCity/workspace/investor-materials/BRAND_GUIDE.md" target="_blank" class="document-card">
+                    <div class="icon">🎯</div>
+                    <span class="badge">Reference</span>
+                    <h3>Brand Identity Guide</h3>
+                    <p>Complete brand specifications including logo, colors, typography, and design system.</p>
+                    <span class="cta">View Guide</span>
+                </a>
+            </div>
+
+            <!-- Investment Process -->
+            <div class="info-section">
+                <h3>🎯 Recommended Investment Process</h3>
+                <p>We suggest the following engagement flow:</p>
+                <ul>
+                    <li><strong>Step 1 - Initial Contact:</strong> Email Template for introduction</li>
+                    <li><strong>Step 2 - Quick Review:</strong> Master Teaser (1-2 pages) for quick overview</li>
+                    <li><strong>Step 3 - Formal Presentation:</strong> Branded HTML for interactive review</li>
+                    <li><strong>Step 4 - Due Diligence:</strong> Comprehensive Analysis with full financials</li>
+                    <li><strong>Step 5 - Print Package:</strong> Print-Optimized Teaser for meetings</li>
+                    <li><strong>Step 6 - Decision:</strong> Investment terms discussion</li>
+                </ul>
+            </div>
+
+            <!-- Key Metrics Highlight -->
+            <div class="info-section">
+                <h3>💰 Key Financial Metrics (Master Model)</h3>
+                <p style="margin-bottom: 0;"><strong>Single Project Yields:</strong> 60.4% Year 1 | 65.3% Year 2 | 66.7% Year 3 | 77.1% Mature</p>
+                <p style="margin-bottom: 0;"><strong>Payback Period:</strong> 1.7 years (7K ONTs @ R10/day, 70% penetration)</p>
+                <p style="margin-bottom: 0;"><strong>Investment Required:</strong> R810M for 24 projects over 3 years</p>
+                <p><strong>Market Opportunity:</strong> 4.2M underserved township households with &lt;10% fiber coverage</p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p><strong>VeloCity Fibre Networks (Pty) Ltd</strong></p>
+            <p>Building Essential Digital Infrastructure in South Africa</p>
+            <div class="contact-info">
+                <p>📧 <a href="mailto:investors@velocityfibre.co.za">investors@velocityfibre.co.za</a></p>
+                <p>🌐 <a href="https://www.velocityfibre.co.za" target="_blank">www.velocityfibre.co.za</a></p>
+                <p>⚠️ <em>This portal contains confidential information intended solely for qualified infrastructure investors.</em></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

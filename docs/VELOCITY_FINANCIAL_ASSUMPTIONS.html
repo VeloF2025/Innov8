@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VeloCity Fibre - Financial Assumptions & Logic</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-navy: #001F5C;
+            --accent-burgundy: #8B3A3A;
+            --secondary-gray: #9CA3AF;
+            --light-gray: #F3F4F6;
+            --dark-text: #1F2937;
+            --border-color: #E5E7EB;
+            --success-green: #10B981;
+            --warning-orange: #F59E0B;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            background-color: #FFFFFF;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--primary-navy) 0%, #0B1E3F 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 4px solid var(--accent-burgundy);
+        }
+
+        .logo-container {
+            margin-bottom: 30px;
+        }
+
+        .logo-mark {
+            width: 280px;
+            height: auto;
+            margin: 0 auto 15px;
+            display: block;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            box-shadow:
+                0 8px 32px rgba(0, 0, 0, 0.3),
+                0 0 20px rgba(139, 58, 58, 0.4),
+                inset 0 1px 1px rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .logo-mark:hover {
+            transform: scale(1.05);
+            box-shadow:
+                0 12px 40px rgba(0, 0, 0, 0.4),
+                0 0 30px rgba(139, 58, 58, 0.6),
+                inset 0 1px 1px rgba(255, 255, 255, 0.15);
+        }
+
+        .logo-mark img {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+        }
+
+        .company-name {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+        }
+
+        .company-tagline {
+            font-size: 18px;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 5px;
+        }
+
+        .document-type {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 15px;
+            font-style: italic;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .section {
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary-navy);
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 4px solid var(--accent-burgundy);
+            display: inline-block;
+        }
+
+        .subsection-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--primary-navy);
+            margin-top: 30px;
+            margin-bottom: 15px;
+            padding-left: 15px;
+            border-left: 4px solid var(--accent-burgundy);
+        }
+
+        /* Assumption Box */
+        .assumption-box {
+            background: var(--light-gray);
+            border-left: 4px solid var(--accent-burgundy);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .assumption-box strong {
+            color: var(--primary-navy);
+            display: block;
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+
+        .assumption-box .value {
+            color: var(--accent-burgundy);
+            font-weight: 600;
+            font-size: 18px;
+            margin: 8px 0;
+        }
+
+        .assumption-box p {
+            color: var(--dark-text);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* Formula Box */
+        .formula-box {
+            background: #F0F9FF;
+            border: 1px solid #0EA5E9;
+            border-left: 4px solid #0EA5E9;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+            font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+            font-size: 13px;
+            overflow-x: auto;
+        }
+
+        .formula-label {
+            color: #0369A1;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            font-size: 14px;
+        }
+
+        th {
+            background: var(--primary-navy);
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 13px;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        tr:hover {
+            background-color: var(--light-gray);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .align-right {
+            text-align: right;
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(0, 31, 92, 0.05), rgba(139, 58, 58, 0.05));
+            border-left: 4px solid var(--accent-burgundy);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .highlight-box strong {
+            color: var(--primary-navy);
+        }
+
+        /* List Styles */
+        ul, ol {
+            margin: 15px 0 15px 25px;
+            line-height: 1.8;
+        }
+
+        li {
+            color: var(--dark-text);
+            margin-bottom: 8px;
+        }
+
+        .check-list li:before {
+            content: "✓ ";
+            color: var(--success-green);
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary-navy);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 50px;
+            border-top: 4px solid var(--accent-burgundy);
+        }
+
+        .footer-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .footer-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .footer-contact {
+            margin: 15px 0;
+            font-size: 14px;
+        }
+
+        .footer-contact a {
+            color: var(--accent-burgundy);
+            text-decoration: none;
+        }
+
+        .footer-disclaimer {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.8);
+            font-style: italic;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .logo-mark {
+                width: 240px;
+                padding: 15px;
+            }
+
+            .company-name {
+                font-size: 36px;
+            }
+
+            .section-title {
+                font-size: 22px;
+            }
+
+            table {
+                font-size: 12px;
+            }
+
+            th, td {
+                padding: 8px;
+            }
+
+            .formula-box {
+                font-size: 11px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="logo-container">
+            <div class="logo-mark">
+                <img src="velocity-fibre-logo-white.png" alt="VeloCity Fibre Networks Logo">
+            </div>
+        </div>
+        <div class="company-tagline">Connecting Communities at the Speed of Light</div>
+        <div class="document-type">FINANCIAL ASSUMPTIONS & CALCULATION LOGIC - 2025</div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Overview -->
+        <div class="section">
+            <h2 class="section-title">📋 Overview</h2>
+            <p style="font-size: 16px; margin: 20px 0; line-height: 1.8;">
+                This document explains the financial assumptions, calculation methodology, and business logic underlying all VeloCity investor materials and financial models. It is intended to help investors understand how we arrived at our projections and the reasoning behind each assumption.
+            </p>
+            <div class="highlight-box">
+                <strong>Key Philosophy:</strong> All assumptions are conservative and based on realistic operational experience. We model cumulative portfolio performance with staggered project launches and gradual revenue ramp-up, not optimistic single-project scenarios.
+            </div>
+        </div>
+
+        <!-- Revenue Model -->
+        <div class="section">
+            <h2 class="section-title">💰 Revenue Model & Pricing</h2>
+
+            <div class="subsection-title">Base Revenue Assumption</div>
+            <div class="assumption-box">
+                <strong>Daily Subscription Fee per Active ONT:</strong>
+                <div class="value">R10.00 (mature rate)</div>
+                <p><strong>Source:</strong> Conservative pricing for township markets. Comparable to R300/month unlimited data service (R10/day equivalent). Accounts for local market willingness-to-pay and competition from satellite providers.</p>
+            </div>
+
+            <div class="subsection-title">Tiered Pricing Model (Revenue Ramp)</div>
+            <p style="margin-bottom: 15px;">Unlike instant full-price revenue, we model gradual pricing acceleration as projects mature and network credibility increases:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Phase</th>
+                        <th>Months</th>
+                        <th>Pricing Rationale</th>
+                        <th>Price/ONT/Day</th>
+                        <th>Market Penetration</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Early Adopter</strong></td>
+                        <td>3-4</td>
+                        <td>Launch incentive, limited coverage, unproven service</td>
+                        <td><strong>R3.50</strong></td>
+                        <td>22% of market</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Growth Phase</strong></td>
+                        <td>5-6</td>
+                        <td>Expanded coverage, proof of service quality</td>
+                        <td><strong>R5.00</strong></td>
+                        <td>44% of market</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Maturation</strong></td>
+                        <td>7-8</td>
+                        <td>Full network coverage, established brand</td>
+                        <td><strong>R7.50</strong></td>
+                        <td>66% of market</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Mature</strong></td>
+                        <td>9+</td>
+                        <td>Optimized operations, premium service delivery</td>
+                        <td><strong>R10.00</strong></td>
+                        <td>80% of market</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="formula-box">
+                <span class="formula-label">Monthly Revenue Calculation:</span>
+                Active ONTs × Days in Month × Price per ONT per Day<br>
+                <strong>Example (Month 5):</strong> 4,400 ONTs × 30 days × R5.00 = R660,000
+            </div>
+        </div>
+
+        <!-- Operational Assumptions -->
+        <div class="section">
+            <h2 class="section-title">🏗️ Operational Assumptions</h2>
+
+            <div class="subsection-title">Monthly OPEX Structure</div>
+            <div class="assumption-box">
+                <strong>Hub-Based OPEX (per project):</strong>
+                <div class="value">R400,000/month (Y1-Y2)</div>
+                <p>Includes: Regional management (50%), technical operations (30%), customer service allocation (15%), general allocation (5%). Based on Hub & Spoke model serving 4-5 projects per hub.</p>
+            </div>
+
+            <div class="subsection-title">OPEX Scaling & Hub & Spoke Efficiency</div>
+            <p style="margin-bottom: 15px;">As portfolio grows, per-project OPEX declines through shared infrastructure:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Period</th>
+                        <th>Portfolio Scale</th>
+                        <th>Per-Project OPEX</th>
+                        <th>Efficiency Gain</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Year 1</strong></td>
+                        <td>4 projects</td>
+                        <td>R400K/month</td>
+                        <td>--</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Year 2</strong></td>
+                        <td>12 projects (3 hubs)</td>
+                        <td>R360K/month</td>
+                        <td>-10% (shared management)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Year 3</strong></td>
+                        <td>24 projects (6 hubs)</td>
+                        <td>R320K/month</td>
+                        <td>-20% (regional optimization)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Mature</strong></td>
+                        <td>24+ projects</td>
+                        <td>R320K/month</td>
+                        <td>Stable (44% below Y1)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="highlight-box">
+                <strong>Why Hub & Spoke Works:</strong> One regional manager supervises 4-5 projects. One customer service center handles 4-5 projects. One technical team manages infrastructure across hub. This eliminates per-project overhead while maintaining quality.
+            </div>
+
+            <div class="subsection-title">Capitalized Costs (Not in Monthly OPEX)</div>
+            <ul class="check-list">
+                <li><strong>Fiber Infrastructure:</strong> R13.5M (10,000 doors, 20km fiber, GPON equipment)</li>
+                <li><strong>ONT Termination:</strong> Included in setup, amortized across 7+ year lifecycle</li>
+                <li><strong>Network Operations Center:</strong> One-time setup amortized across hub</li>
+                <li><strong>Maintenance Reserve:</strong> Embedded in monthly OPEX (5% of revenue post-ramp)</li>
+            </ul>
+        </div>
+
+        <!-- ONT Activation Assumptions -->
+        <div class="section">
+            <h2 class="section-title">📱 ONT Activation & Penetration</h2>
+
+            <div class="subsection-title">Monthly Activation Rate</div>
+            <div class="assumption-box">
+                <strong>Target Activation Rate:</strong>
+                <div class="value">250-300 ONTs per week (~1,100/month)</div>
+                <p><strong>Why Conservative:</strong> Field team size, installation logistics, customer acquisition cycles. Township markets require door-to-door verification and community engagement, not instant uptake.</p>
+            </div>
+
+            <div class="subsection-title">Maximum Penetration</div>
+            <div class="assumption-box">
+                <strong>Target Penetration Cap:</strong>
+                <div class="value">80% (8,000 of 10,000 doors)</div>
+                <p><strong>Why Not Higher:</strong> 20% of households uneconomical (no indoor space, multiple families, permanent occupancy issues, income constraints). Based on FNO industry standards (Vumatel, Openserve experience).</p>
+            </div>
+
+            <div class="subsection-title">Activation Timeline</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Month</th>
+                        <th>ONTs Activated (Cumulative)</th>
+                        <th>Monthly Activations</th>
+                        <th>Penetration %</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1-2</td>
+                        <td>0</td>
+                        <td>0 (Setup phase)</td>
+                        <td>0%</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>1,100</td>
+                        <td>1,100</td>
+                        <td>11%</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>2,200</td>
+                        <td>1,100</td>
+                        <td>22%</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>3,300</td>
+                        <td>1,100</td>
+                        <td>33%</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>4,400</td>
+                        <td>1,100</td>
+                        <td>44%</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>5,500</td>
+                        <td>1,100</td>
+                        <td>55%</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>6,600</td>
+                        <td>1,100</td>
+                        <td>66%</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>7,400</td>
+                        <td>800</td>
+                        <td>74%</td>
+                    </tr>
+                    <tr>
+                        <td>10+</td>
+                        <td>8,000</td>
+                        <td>300 (replacement only)</td>
+                        <td>80%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Key Metric Calculations -->
+        <div class="section">
+            <h2 class="section-title">📊 Key Financial Metrics</h2>
+
+            <div class="subsection-title">Operational Breakeven (Monthly)</div>
+            <div class="highlight-box">
+                <strong>Definition:</strong> Month when monthly revenue first exceeds monthly OPEX<br><br>
+                <strong>Calculation:</strong> Monthly Revenue > Monthly OPEX<br>
+                <strong>Achieved:</strong> Month 5 (4,400 ONTs @ R5.00/day = R660K revenue vs R400K OPEX)
+            </div>
+
+            <div class="subsection-title">Cumulative Payback Period</div>
+            <div class="formula-box">
+                <span class="formula-label">Cumulative Payback = Initial Investment ÷ Average Monthly Cash Flow</span>
+                R135M ÷ R17.8M = 7.6 months<br><br>
+                <strong>Includes:</strong> 2 months setup (-R400K/month) + months 3-10 gradual ramp
+            </div>
+
+            <div class="subsection-title">Annual Yield (Return on Investment)</div>
+            <div class="formula-box">
+                <span class="formula-label">Annual Yield = (Annual Cash Flow ÷ Initial Investment) × 100</span>
+                Year 1: (R46.8M ÷ R135M) × 100 = 34.5%<br>
+                Mature: (R96M ÷ R135M) × 100 = 71.1%
+            </div>
+
+            <div class="highlight-box">
+                <strong>Why Portfolio Yield Differs from Single Project:</strong> Year 1 has 4 projects at different stages. Projects launched in Month 1 reach maturity by Month 8. Projects launched in Q2 are ramping. This blended average (34.5%) is more realistic than showing mature project economics in Year 1.
+            </div>
+
+            <div class="subsection-title">5-Year ROI Calculation</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Year</th>
+                        <th>Monthly Avg Cash Flow</th>
+                        <th>Annual Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Year 1</td>
+                        <td>R3.9M</td>
+                        <td>R46.8M</td>
+                    </tr>
+                    <tr>
+                        <td>Year 2</td>
+                        <td>R9.9M</td>
+                        <td>R118.8M</td>
+                    </tr>
+                    <tr>
+                        <td>Year 3</td>
+                        <td>R28.4M</td>
+                        <td>R340.8M</td>
+                    </tr>
+                    <tr>
+                        <td>Year 4</td>
+                        <td>R40M</td>
+                        <td>R480M</td>
+                    </tr>
+                    <tr>
+                        <td>Year 5</td>
+                        <td>R40M</td>
+                        <td>R480M</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><strong>5-Year Cumulative</strong></td>
+                        <td><strong>R1,466.4M</strong></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><strong>Initial Investment (Y1-3)</strong></td>
+                        <td><strong>R810M</strong></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><strong>5-Year ROI</strong></td>
+                        <td><strong>(1,466.4 - 810) ÷ 810 = 81% IRR</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Portfolio Yield Calculation -->
+        <div class="section">
+            <h2 class="section-title">🎯 Portfolio Yield (Blended Rate)</h2>
+
+            <div class="subsection-title">Why We Show Blended Portfolio Yield</div>
+            <p style="margin-bottom: 15px;">Rather than showing single-project mature yield in Year 1 (misleading), we calculate blended portfolio yield accounting for staggered launches and ramping:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Year</th>
+                        <th>Running Portfolio</th>
+                        <th>Project Stages</th>
+                        <th>Blended Yield</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Year 1</strong></td>
+                        <td>4 projects</td>
+                        <td>P1 maturing, P2-P4 ramping</td>
+                        <td><strong>34.5%</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Year 2</strong></td>
+                        <td>12 projects</td>
+                        <td>4 mature + 8 ramping (blended)</td>
+                        <td><strong>35.2%</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Year 3</strong></td>
+                        <td>24 projects</td>
+                        <td>12 mature + 12 ramping (blended)</td>
+                        <td><strong>52.8%</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Mature</strong></td>
+                        <td>24+ projects</td>
+                        <td>All projects at optimized OPEX</td>
+                        <td><strong>71.1%</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="highlight-box">
+                <strong>Important:</strong> Single mature project at 8,000 ONTs @ R10/day with R320K OPEX yields 71.1% annually. But Year 1 portfolio yield is 34.5% because most projects are ramping. This is realistic and conservative.
+            </div>
+        </div>
+
+        <!-- Scenario Analysis -->
+        <div class="section">
+            <h2 class="section-title">📈 Scenario Analysis Logic</h2>
+
+            <div class="subsection-title">Penetration Rate Sensitivity</div>
+            <p style="margin-bottom: 15px;">We model multiple penetration scenarios to show outcomes if activation rates differ from base case (1,100/month):</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Scenario</th>
+                        <th>Final ONT Count</th>
+                        <th>Penetration %</th>
+                        <th>Mature Yield</th>
+                        <th>Assessment</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Conservative</td>
+                        <td>5,000</td>
+                        <td>50%</td>
+                        <td>32.6%</td>
+                        <td>Market saturation slower, still profitable</td>
+                    </tr>
+                    <tr>
+                        <td>Moderate</td>
+                        <td>6,000</td>
+                        <td>60%</td>
+                        <td>41.5%</td>
+                        <td>Realistic for township uptake</td>
+                    </tr>
+                    <tr>
+                        <td>Good</td>
+                        <td>7,000</td>
+                        <td>70%</td>
+                        <td>50.4%</td>
+                        <td>Above-average adoption, achievable</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Base Case</strong></td>
+                        <td><strong>8,000</strong></td>
+                        <td><strong>80%</strong></td>
+                        <td><strong>59.3%</strong></td>
+                        <td>Industry-standard for GPON FNO</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="formula-box">
+                <span class="formula-label">Yield at Different Penetrations:</span>
+                Annual Cash Flow = (ONTs × Days × Price) - Annual OPEX<br>
+                Yield = Annual Cash Flow ÷ Initial Investment<br>
+                <strong>Example (50% penetration):</strong> (5K × 365 × R10) - (R320K × 12) = R17.44M ÷ R135M = 12.9% annual
+            </div>
+        </div>
+
+        <!-- Assumptions Validation -->
+        <div class="section">
+            <h2 class="section-title">✅ Assumptions Validation & Sources</h2>
+
+            <div class="subsection-title">Conservative Positioning</div>
+            <ul class="check-list">
+                <li><strong>Pricing (R10/day):</strong> Below metro fiber (R500+/month) but above satellite (R200-400/month). Comparable to Vumatel's B-segment pricing.</li>
+                <li><strong>Activation Rate (250-300/week):</strong> Achievable with 2-person field teams, township community engagement practices.</li>
+                <li><strong>Penetration Cap (80%):</strong> FNO industry standard. Vumatel, Openserve typically see 75-85% in mature markets.</li>
+                <li><strong>OPEX (R400K/month):</strong> Based on sector benchmarks; includes margin for contractor payment variations.</li>
+                <li><strong>Tiered Pricing Ramp:</strong> Reflects reality of customer acquisition across growth phases, not instant full pricing.</li>
+            </ul>
+
+            <div class="subsection-title">Why Not Optimistic Scenarios?</div>
+            <p style="margin-bottom: 15px;">Our model deliberately avoids "best case" assumptions like:</p>
+            <ul>
+                <li>Instant 90%+ penetration (unrealistic in township markets)</li>
+                <li>R10/day pricing from Day 1 (customer acquisition requires incentives)</li>
+                <li>Single-project maturity in Year 1 (portfolio takes time to ramp)</li>
+                <li>Zero churn (assumes 100% retention, but we assume 100% new activations)</li>
+            </ul>
+        </div>
+
+        <!-- Investment Mechanics -->
+        <div class="section">
+            <h2 class="section-title">💵 Investment Mechanics</h2>
+
+            <div class="subsection-title">Deployment Schedule & Capital Deployment</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Year</th>
+                        <th>New Projects</th>
+                        <th>Per-Project Cost</th>
+                        <th>Annual Investment</th>
+                        <th>Cumulative</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Year 1</strong></td>
+                        <td>4 (1 per quarter)</td>
+                        <td>R33.75M</td>
+                        <td>R135M</td>
+                        <td>R135M</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Year 2</strong></td>
+                        <td>8 (2 per quarter)</td>
+                        <td>R33.75M</td>
+                        <td>R270M</td>
+                        <td>R405M</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Year 3</strong></td>
+                        <td>12 (3 per quarter)</td>
+                        <td>R33.75M</td>
+                        <td>R405M</td>
+                        <td>R810M</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="subsection-title">Per-Project Capital Requirement Breakdown</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Component</th>
+                        <th>Cost</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Fiber Network (20km, 10K doors)</td>
+                        <td>R13.5M</td>
+                        <td>GPON headend, fiber roll, splitters, cabinets</td>
+                    </tr>
+                    <tr>
+                        <td>Initial ONT Provisioning (300 units)</td>
+                        <td>R1.8M</td>
+                        <td>Equipment for early adopter phase</td>
+                    </tr>
+                    <tr>
+                        <td>Regional Hub Share</td>
+                        <td>R8.5M</td>
+                        <td>NOC, management office, shared equipment</td>
+                    </tr>
+                    <tr>
+                        <td>Working Capital</td>
+                        <td>R9.4M</td>
+                        <td>Operating runway (2 months OPEX + contingency)</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><strong>Total per Project</strong></td>
+                        <td><strong>R33.75M</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Sensitivity & Risk -->
+        <div class="section">
+            <h2 class="section-title">⚠️ Sensitivity & Risk Factors</h2>
+
+            <div class="subsection-title">What Changes Our Yield Projections</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Factor</th>
+                        <th>Base Case</th>
+                        <th>If 20% Lower</th>
+                        <th>Impact</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Activation Rate</td>
+                        <td>1,100/month</td>
+                        <td>880/month</td>
+                        <td>Yield drops to 45% (from 59%)</td>
+                    </tr>
+                    <tr>
+                        <td>Pricing (Mature)</td>
+                        <td>R10/day</td>
+                        <td>R8/day</td>
+                        <td>Yield drops to 48% (from 59%)</td>
+                    </tr>
+                    <tr>
+                        <td>OPEX</td>
+                        <td>R400K/month</td>
+                        <td>R480K/month</td>
+                        <td>Yield drops to 46% (from 59%)</td>
+                    </tr>
+                    <tr>
+                        <td>Max Penetration</td>
+                        <td>80% (8K)</td>
+                        <td>64% (6.4K)</td>
+                        <td>Yield drops to 41% (from 59%)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="highlight-box">
+                <strong>Takeaway:</strong> Even with 20% adverse variance on any single factor, yields remain in the 40-50% range. Simultaneous adverse variance on multiple factors (e.g., 15% lower activation + 10% higher OPEX) is primary risk scenario, yielding 25-30%.
+            </div>
+        </div>
+
+        <!-- Glossary -->
+        <div class="section">
+            <h2 class="section-title">📖 Glossary of Terms</h2>
+
+            <div class="assumption-box">
+                <strong>ONT (Optical Network Termination)</strong>
+                <p>The device installed at customer premises that terminates the fiber network and converts light signals to electrical signals for broadband use. Cost: ~R6K per unit.</p>
+            </div>
+
+            <div class="assumption-box">
+                <strong>Penetration Rate</strong>
+                <p>Percentage of homes passed (R.O.U.) that have active ONTs with paying subscriptions. 80% penetration means 8,000 of 10,000 homes have service.</p>
+            </div>
+
+            <div class="assumption-box">
+                <strong>Hub & Spoke Architecture</strong>
+                <p>Centralized management model where one regional "hub" (office) manages 4-5 fiber network "spokes" (projects). Reduces per-project overhead through shared management and operations teams.</p>
+            </div>
+
+            <div class="assumption-box">
+                <strong>OPEX (Operating Expenditure)</strong>
+                <p>Monthly operational costs including salaries, vehicle maintenance, customer service, NOC operations, and general overhead. Excludes capex (fiber, equipment).</p>
+            </div>
+
+            <div class="assumption-box">
+                <strong>Operational Breakeven</strong>
+                <p>The month when monthly revenue exceeds monthly OPEX for the first time. After this point, project generates positive monthly cash flow (but may not yet achieve cumulative payback).</p>
+            </div>
+
+            <div class="assumption-box">
+                <strong>Cumulative Payback Period</strong>
+                <p>The month when cumulative cash flow (revenues minus OPEX) equals initial capital investment. Accounts for entire startup period including setup phase losses.</p>
+            </div>
+
+            <div class="assumption-box">
+                <strong>Annual Yield / ROI</strong>
+                <p>Annual cash flow divided by initial investment, expressed as percentage. If project generates R96M/year with R135M investment, yield = 71.1%.</p>
+            </div>
+
+            <div class="assumption-box">
+                <strong>Blended Portfolio Yield</strong>
+                <p>Weighted average yield across all projects in portfolio, accounting for staggered launches. Realistic measure of investor returns across entire portfolio.</p>
+            </div>
+        </div>
+
+        <!-- Questions -->
+        <div class="section">
+            <h2 class="section-title">❓ Common Questions</h2>
+
+            <div class="subsection-title">Q: Why is Year 1 yield (34.5%) so much lower than mature project yield (71.1%)?</div>
+            <p><strong>A:</strong> Year 1 has 4 projects at different maturity stages. First project (launched Month 1) reaches 71% yield by Month 8. But projects 2, 3, 4 (launched Months 2-4) are just beginning ramp. Blended across all four, Year 1 average is 34.5%. This is realistic, not optimistic.</p>
+
+            <div class="subsection-title">Q: What if our activation rate is slower than 1,100/month?</div>
+            <p><strong>A:</strong> Projects hitting 50% penetration (5K ONTs) still yield 32.6%, which is attractive. We model 1,100/month as achievable with proven field team model. If slower, project still works, just takes longer and cumulative portfolio grows more slowly.</p>
+
+            <div class="subsection-title">Q: Why does OPEX stay at R400K even as ONTs grow from 1K to 8K?</div>
+            <p><strong>A:</strong> Hub model: one manager oversees project regardless of size. One customer service team handles 1K-8K ONTs with minimal marginal cost. As hub grows to 5 projects, fixed costs spread. Per-project OPEX does decline as portfolio scales (R400K → R360K → R320K).</p>
+
+            <div class="subsection-title">Q: Is R10/day realistic for township markets?</div>
+            <p><strong>A:</strong> Yes. Equivalent to R300/month for unlimited data. Satellite (Starlink) costs R500+. Fiber should command premium. We reach R10 only in Month 9+ (mature phase), starting at R3.50 for early adopters. This pricing ladder is realistic and proven in FNO markets.</p>
+
+            <div class="subsection-title">Q: What happens to revenue after 10 months (beyond ramp)?</div>
+            <p><strong>A:</strong> Projects mature at 8K ONTs. Monthly revenue flattens at R2.4M (8K × 30 × R10). Growth comes from: (1) new projects in portfolio expanding overall revenue, (2) slight price increases over time, (3) additional revenue streams (corporate accounts, managed services) not modeled conservatively.</p>
+        </div>
+
+        <!-- Next Steps -->
+        <div class="section">
+            <h2 class="section-title">📎 Related Documents</h2>
+            <div class="highlight-box">
+                <strong>Interactive Financial Models:</strong> <a href="VELOCITY_FINANCIAL_MODELS.html" style="color: var(--accent-burgundy); text-decoration: none; font-weight: 600;">View Financial Models Dashboard</a>
+                <p style="margin-top: 10px; font-size: 14px;">Month-by-month projections, full portfolio scenarios, and penetration sensitivity analysis.</p>
+            </div>
+            <div class="highlight-box">
+                <strong>Investor Teaser:</strong> <a href="VELOCITY_BRANDED_INVESTOR_TEASER.html" style="color: var(--accent-burgundy); text-decoration: none; font-weight: 600;">View Branded HTML Presentation</a>
+                <p style="margin-top: 10px; font-size: 14px;">Executive summary with market opportunity, team, and de-risking factors.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer-content">
+            <div class="footer-title">VeloCity Fibre Networks</div>
+            <div class="footer-contact">
+                <strong>Investor Relations:</strong> <a href="mailto:investors@velocityfibre.co.za">investors@velocityfibre.co.za</a>
+            </div>
+            <div class="footer-contact">
+                <strong>Website:</strong> <a href="http://www.velocityfibre.co.za">www.velocityfibre.co.za</a>
+            </div>
+            <div class="footer-contact">
+                <strong>Headquarters:</strong> South Africa
+            </div>
+            <div class="footer-disclaimer">
+                © 2025 VeloCity Fibre Networks (Pty) Ltd. All rights reserved.<br><br>
+                This document explains the financial assumptions and calculation methodology underlying all VeloCity investor materials. All projections assume realistic operational assumptions: conservative 80% penetration, 1,100 ONT/month activation, tiered pricing (R3.50→R10), and Hub & Spoke operational scaling. For qualified investors only.
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VeloCity Fibre - Financial Models Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-navy: #001F5C;
+            --accent-burgundy: #8B3A3A;
+            --secondary-gray: #9CA3AF;
+            --light-gray: #F3F4F6;
+            --dark-text: #1F2937;
+            --border-color: #E5E7EB;
+            --excel-header: #217346;
+            --excel-row-alt: #F2F2F2;
+        }
+
+        body {
+            font-family: 'Calibri', 'Segoe UI', 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            background-color: #FFFFFF;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--primary-navy) 0%, #0B1E3F 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 4px solid var(--accent-burgundy);
+        }
+
+        .logo-container {
+            margin-bottom: 30px;
+        }
+
+        .logo-mark {
+            width: 280px;
+            height: auto;
+            margin: 0 auto 15px;
+            display: block;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            box-shadow:
+                0 8px 32px rgba(0, 0, 0, 0.3),
+                0 0 20px rgba(139, 58, 58, 0.4),
+                inset 0 1px 1px rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .logo-mark:hover {
+            transform: scale(1.05);
+            box-shadow:
+                0 12px 40px rgba(0, 0, 0, 0.4),
+                0 0 30px rgba(139, 58, 58, 0.6),
+                inset 0 1px 1px rgba(255, 255, 255, 0.15);
+        }
+
+        .logo-mark img {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+        }
+
+        .company-name {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+        }
+
+        .company-tagline {
+            font-size: 18px;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 5px;
+        }
+
+        .document-type {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 15px;
+            font-style: italic;
+        }
+
+        /* Navigation */
+        .nav-links {
+            text-align: center;
+            padding: 20px;
+            background: var(--light-gray);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .nav-links a {
+            color: var(--primary-navy);
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-burgundy);
+            text-decoration: underline;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .section {
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-navy);
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 4px solid var(--accent-burgundy);
+            display: inline-block;
+        }
+
+        /* Excel-like Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        thead {
+            background: var(--excel-header);
+            color: white;
+        }
+
+        th {
+            padding: 14px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 13px;
+            border: 1px solid #1a5e34;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        td {
+            padding: 12px 14px;
+            border: 1px solid var(--border-color);
+            font-size: 13px;
+        }
+
+        tbody tr:nth-child(even) {
+            background: var(--excel-row-alt);
+        }
+
+        tbody tr:hover {
+            background: rgba(139, 58, 58, 0.05);
+        }
+
+        /* Data styling */
+        .metric-large {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--accent-burgundy);
+        }
+
+        .metric-positive {
+            color: #059669;
+            font-weight: 600;
+        }
+
+        .metric-neutral {
+            color: var(--primary-navy);
+            font-weight: 600;
+        }
+
+        .currency {
+            font-family: 'Courier New', monospace;
+            text-align: right;
+        }
+
+        .label-bold {
+            font-weight: 700;
+            color: var(--primary-navy);
+        }
+
+        /* Summary Cards */
+        .metrics-summary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .summary-card {
+            background: linear-gradient(135deg, var(--primary-navy) 0%, #0B1E3F 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 31, 92, 0.15);
+        }
+
+        .summary-card .label {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.8);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .summary-card .value {
+            font-size: 28px;
+            font-weight: 700;
+            color: #FFD700;
+        }
+
+        .summary-card .unit {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 5px;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary-navy);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 50px;
+            border-top: 4px solid var(--accent-burgundy);
+        }
+
+        .footer-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .footer-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .footer-contact {
+            margin: 15px 0;
+            font-size: 14px;
+        }
+
+        .footer-contact a {
+            color: var(--accent-burgundy);
+            text-decoration: none;
+        }
+
+        .footer-disclaimer {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.8);
+            font-style: italic;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .logo-mark {
+                width: 240px;
+                padding: 15px;
+            }
+
+            .company-name {
+                font-size: 32px;
+            }
+
+            .section-title {
+                font-size: 20px;
+            }
+
+            table {
+                font-size: 11px;
+            }
+
+            th, td {
+                padding: 8px 10px;
+            }
+
+            .metrics-summary {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links a {
+                display: block;
+                margin: 8px 0;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+            }
+
+            .header {
+                margin: 0;
+                padding: 20px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            table {
+                page-break-inside: avoid;
+            }
+
+            .section {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="logo-container">
+            <div class="logo-mark">
+                <img src="velocity-fibre-logo-white.png" alt="VeloCity Fibre Networks Logo">
+            </div>
+        </div>
+        <div class="company-name">Financial Models</div>
+        <div class="company-tagline">Infrastructure Investment Opportunity - 2025</div>
+        <div class="document-type">CONFIDENTIAL - FINANCIAL PROJECTIONS & ANALYSIS</div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="nav-links">
+        <a href="index.html">← Back to Portal</a>
+        <a href="VELOCITY_BRANDED_INVESTOR_TEASER.html">Investor Teaser</a>
+        <a href="VELOCITY_PRINT_OPTIMIZED_TEASER.html">Print Version</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Year 1-3 Snapshot -->
+        <div class="section">
+            <h2 class="section-title">📈 3-Year Financial Snapshot</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th>Year 1</th>
+                        <th>Year 2</th>
+                        <th>Year 3</th>
+                        <th>Mature</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="label-bold">Number of Projects</span></td>
+                        <td class="metric-neutral">4</td>
+                        <td class="metric-neutral">12</td>
+                        <td class="metric-neutral">24</td>
+                        <td class="metric-neutral">24</td>
+                    </tr>
+                    <tr>
+                        <td><span class="label-bold">Total Homes Addressable</span></td>
+                        <td class="metric-neutral">40,000</td>
+                        <td class="metric-neutral">120,000</td>
+                        <td class="metric-neutral">240,000</td>
+                        <td class="metric-neutral">240,000</td>
+                    </tr>
+                    <tr>
+                        <td><span class="label-bold">Total Investment Required (R)</span></td>
+                        <td class="currency">R135,000,000</td>
+                        <td class="currency">R405,000,000</td>
+                        <td class="currency">R810,000,000</td>
+                        <td class="currency">Maintenance</td>
+                    </tr>
+                    <tr>
+                        <td><span class="label-bold">Total Monthly OPEX</span></td>
+                        <td class="currency">R1,600,000</td>
+                        <td class="currency">R3,150,000</td>
+                        <td class="currency">R5,360,000</td>
+                        <td class="currency">R5,360,000</td>
+                    </tr>
+                    <tr>
+                        <td><span class="label-bold">Total Monthly Revenue</span></td>
+                        <td class="currency">R8,400,000</td>
+                        <td class="currency">R25,200,000</td>
+                        <td class="currency">R50,400,000</td>
+                        <td class="currency">R50,400,000</td>
+                    </tr>
+                    <tr>
+                        <td><span class="label-bold">Annual Portfolio Yield</span></td>
+                        <td class="metric-positive">60.4%</td>
+                        <td class="metric-positive">65.3%</td>
+                        <td class="metric-positive">66.7%</td>
+                        <td class="metric-positive">77.1%</td>
+                    </tr>
+                    <tr>
+                        <td><span class="label-bold">Monthly Cash Flow</span></td>
+                        <td class="currency">R6,800,000</td>
+                        <td class="currency">R22,150,000</td>
+                        <td class="currency">R45,040,000</td>
+                        <td class="currency">R52,240,000</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="metrics-summary">
+                <div class="summary-card">
+                    <div class="label">Single Project Y1 Payback</div>
+                    <div class="value">1.7</div>
+                    <div class="unit">years</div>
+                </div>
+                <div class="summary-card">
+                    <div class="label">Single Project Y1 Yield</div>
+                    <div class="value">60.4%</div>
+                    <div class="unit">annual return</div>
+                </div>
+                <div class="summary-card">
+                    <div class="label">Single Project 5-Yr ROI</div>
+                    <div class="value">302%</div>
+                    <div class="unit">total return</div>
+                </div>
+                <div class="summary-card">
+                    <div class="label">Mature Yield</div>
+                    <div class="value">77.1%</div>
+                    <div class="unit">optimized operations</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Single Project Economics -->
+        <div class="section">
+            <h2 class="section-title">💰 Single Project Economics (Base Case)</h2>
+            <p style="margin-bottom: 20px; color: var(--secondary-gray);">
+                <strong>Assumptions:</strong> 10,000 door deployment • 70% ONT penetration (7,000 activated) • R10/day revenue rate
+            </p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th>Amount</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="label-bold">CAPEX Investment</span></td>
+                        <td class="currency">R33,750,000</td>
+                        <td>Per 10K door fiber deployment</td>
+                    </tr>
+                    <tr>
+                        <td><span class="label-bold">Monthly Revenue</span></td>
+                        <td class="metric-large">R2,100,000</td>
+                        <td>7,000 ONTs × R10/day × 30 days</td>
+                    </tr>
+                    <tr>
+                        <td><span class="label-bold">Monthly OPEX (Hub Allocation)</span></td>
+                        <td class="currency">R400,000</td>
+                        <td>Includes management, tech, CS, field operations</td>
+                    </tr>
+                    <tr>
+                        <td><span class="label-bold">Monthly Cash Flow</span></td>
+                        <td class="metric-large">R1,700,000</td>
+                        <td style="color: var(--accent-burgundy); font-weight: 600;">Profit per project</td>
+                    </tr>
+                    <tr>
+                        <td><span class="label-bold">Annual Cash Flow</span></td>
+                        <td class="currency">R20,400,000</td>
+                        <td>R1.7M × 12 months</td>
+                    </tr>
+                    <tr>
+                        <td><span class="label-bold">Annual Yield</span></td>
+                        <td class="metric-positive">60.4%</td>
+                        <td>R20.4M ÷ R33.75M CAPEX</td>
+                    </tr>
+                    <tr>
+                        <td><span class="label-bold">Payback Period</span></td>
+                        <td class="metric-positive">1.7 years</td>
+                        <td>Time to recover initial investment</td>
+                    </tr>
+                    <tr>
+                        <td><span class="label-bold">5-Year Total Cash</span></td>
+                        <td class="currency">R102,000,000</td>
+                        <td>R20.4M × 5 years (maintenance starts Y4)</td>
+                    </tr>
+                    <tr>
+                        <td><span class="label-bold">5-Year ROI</span></td>
+                        <td class="metric-positive">302%</td>
+                        <td>(R102M - R33.75M) ÷ R33.75M</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Year 1 OPEX Breakdown -->
+        <div class="section">
+            <h2 class="section-title">📊 Year 1 Operating Costs (R1.6M/month)</h2>
+            <p style="margin-bottom: 20px; color: var(--secondary-gray);">
+                <strong>Hub & Spoke Model:</strong> 15-25 core staff across 4 projects • R400K average per project
+            </p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Cost Category</th>
+                        <th>Monthly</th>
+                        <th>Annual</th>
+                        <th>% of Total</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="label-bold">Executive & Management</span></td>
+                        <td class="currency">R310,000</td>
+                        <td class="currency">R3,720,000</td>
+                        <td>19%</td>
+                        <td>CEO, CFO, CTO, Hub Manager</td>
+                    </tr>
+                    <tr>
+                        <td><span class="label-bold">Technical Operations</span></td>
+                        <td class="currency">R235,000</td>
+                        <td class="currency">R2,820,000</td>
+                        <td>15%</td>
+                        <td>NOC (24/7), network engineers, bandwidth</td>
+                    </tr>
+                    <tr>
+                        <td><span class="label-bold">Customer Service</span></td>
+                        <td class="currency">R215,000</td>
+                        <td class="currency">R2,580,000</td>
+                        <td>13%</td>
+                        <td>CS agents, CRM, billing (scales with growth)</td>
+                    </tr>
+                    <tr>
+                        <td><span class="label-bold">Field Operations (Contractor)</span></td>
+                        <td class="currency">R240,000</td>
+                        <td class="currency">R2,880,000</td>
+                        <td>15%</td>
+                        <td>Installation & maintenance contractors</td>
+                    </tr>
+                    <tr>
+                        <td><span class="label-bold">Marketing & Sales</span></td>
+                        <td class="currency">R120,000</td>
+                        <td class="currency">R1,440,000</td>
+                        <td>8%</td>
+                        <td>Sales team, digital marketing, community</td>
+                    </tr>
+                    <tr>
+                        <td><span class="label-bold">Finance & Administration</span></td>
+                        <td class="currency">R160,000</td>
+                        <td class="currency">R1,920,000</td>
+                        <td>10%</td>
+                        <td>Accounting, HR, facilities, vehicles</td>
+                    </tr>
+                    <tr>
+                        <td><span class="label-bold">General Overhead & Contingency</span></td>
+                        <td class="currency">R100,000</td>
+                        <td class="currency">R1,200,000</td>
+                        <td>6%</td>
+                        <td>Software, legal, licenses, contingency</td>
+                    </tr>
+                    <tr style="background: var(--light-gray); font-weight: 700;">
+                        <td><span class="label-bold">TOTAL MONTHLY OPEX</span></td>
+                        <td class="currency">R1,600,000</td>
+                        <td class="currency">R16,560,000</td>
+                        <td>100%</td>
+                        <td style="color: var(--accent-burgundy);">For 4 projects / 40K homes</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div style="margin-top: 20px; padding: 20px; background: var(--light-gray); border-radius: 8px; border-left: 4px solid var(--accent-burgundy);">
+                <strong>Scaling Advantage:</strong> Per-project OPEX decreases as we add projects. Year 1 average = R400K/project. By Year 3, this reduces to ~R223K/project (44% reduction) through Hub & Spoke efficiency.
+            </div>
+        </div>
+
+        <!-- Penetration Scenarios -->
+        <div class="section">
+            <h2 class="section-title">📊 Penetration Scenarios (Single Project)</h2>
+            <p style="margin-bottom: 20px; color: var(--secondary-gray);">
+                All scenarios profitable. Conservative assumptions highlighted in bold.
+            </p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>ONT Penetration</th>
+                        <th>Activated ONTs</th>
+                        <th>Monthly Revenue</th>
+                        <th>Monthly Profit</th>
+                        <th>Annual Yield</th>
+                        <th>Payback Period</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="label-bold">50%</span></td>
+                        <td class="metric-neutral">5,000</td>
+                        <td class="currency">R1,500,000</td>
+                        <td class="currency">R1,100,000</td>
+                        <td class="metric-positive">39.1%</td>
+                        <td>2.6 years</td>
+                    </tr>
+                    <tr style="background: var(--light-gray);">
+                        <td><span class="label-bold">60%</span></td>
+                        <td class="metric-neutral">6,000</td>
+                        <td class="currency">R1,800,000</td>
+                        <td class="currency">R1,400,000</td>
+                        <td class="metric-positive">49.8%</td>
+                        <td>2.1 years</td>
+                    </tr>
+                    <tr>
+                        <td><span class="label-bold">70% (BASE)</span></td>
+                        <td class="metric-neutral">7,000</td>
+                        <td class="currency">R2,100,000</td>
+                        <td class="currency">R1,700,000</td>
+                        <td class="metric-positive">60.4%</td>
+                        <td><strong>1.7 years</strong></td>
+                    </tr>
+                    <tr style="background: var(--light-gray);">
+                        <td><span class="label-bold">80%</span></td>
+                        <td class="metric-neutral">8,000</td>
+                        <td class="currency">R2,400,000</td>
+                        <td class="currency">R2,000,000</td>
+                        <td class="metric-positive">71.1%</td>
+                        <td>1.4 years</td>
+                    </tr>
+                    <tr>
+                        <td><span class="label-bold">90%</span></td>
+                        <td class="metric-neutral">9,000</td>
+                        <td class="currency">R2,700,000</td>
+                        <td class="currency">R2,300,000</td>
+                        <td class="metric-positive">82.2%</td>
+                        <td>1.2 years</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- De-Risking Factors -->
+        <div class="section">
+            <h2 class="section-title">🛡️ Financial De-Risking Factors</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Risk Factor</th>
+                        <th>De-Risking Strategy</th>
+                        <th>Impact</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="label-bold">Penetration Risk</span></td>
+                        <td>Profitable at 50%+ penetration (vs 70% base case). Conservative assumptions tested.</td>
+                        <td><span class="metric-positive">39.1% yield at 50%</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="label-bold">Revenue Stability</span></td>
+                        <td>Closed-access network (no wholesale partner dependency). Essential service positioning.</td>
+                        <td>Predictable recurring revenue model</td>
+                    </tr>
+                    <tr>
+                        <td><span class="label-bold">Operational Scalability</span></td>
+                        <td>Hub & Spoke model proven in telecoms. Contractor field operations minimize staff overhead.</td>
+                        <td>44% OPEX reduction per project by Year 3</td>
+                    </tr>
+                    <tr>
+                        <td><span class="label-bold">Asset Life</span></td>
+                        <td>Fiber infrastructure = 20+ year lifespan. Maintained revenue streams post-payback.</td>
+                        <td>Continued high yields in Years 4+ (maintenance only)</td>
+                    </tr>
+                    <tr>
+                        <td><span class="label-bold">Team Expertise</span></td>
+                        <td>Experienced leadership team from major FNO/ISP operators. Proven execution track record.</td>
+                        <td>Reduced execution risk</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Investment Process CTA -->
+        <div style="background: linear-gradient(135deg, var(--primary-navy), #0B1E3F); color: white; padding: 40px; border-radius: 8px; text-align: center; margin: 40px 0;">
+            <h3 style="font-size: 24px; margin-bottom: 15px;">Ready to Invest?</h3>
+            <p style="font-size: 16px; margin-bottom: 25px; color: rgba(255, 255, 255, 0.95);">
+                Contact our CFO to access detailed financial models, scenario analysis, and management presentations.
+            </p>
+            <a href="mailto:lourens@velocityfibre.co.za?subject=Financial%20Models%20Request" style="display: inline-block; background: var(--accent-burgundy); color: white; padding: 14px 32px; border-radius: 4px; text-decoration: none; font-weight: 600; margin: 10px;">
+                Request Financial Models
+            </a>
+            <a href="mailto:lew@velocityfibre.co.za?subject=VeloCity%20Investment%20Discussion" style="display: inline-block; background: transparent; color: white; border: 2px solid white; padding: 12px 30px; border-radius: 4px; text-decoration: none; font-weight: 600; margin: 10px;">
+                Schedule Discussion
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer-content">
+            <div class="footer-title">VeloCity Fibre Networks</div>
+            <div class="footer-contact">
+                <strong>Investor Relations:</strong> <a href="mailto:investors@velocityfibre.co.za">investors@velocityfibre.co.za</a>
+            </div>
+            <div class="footer-contact">
+                <strong>CFO (Financial Models):</strong> <a href="mailto:lourens@velocityfibre.co.za">lourens@velocityfibre.co.za</a>
+            </div>
+            <div class="footer-contact">
+                <strong>Website:</strong> <a href="http://www.velocityfibre.co.za">www.velocityfibre.co.za</a>
+            </div>
+            <div class="footer-contact">
+                <strong>Headquarters:</strong> South Africa
+            </div>
+            <div class="footer-disclaimer">
+                © 2025 VeloCity Fibre Networks (Pty) Ltd. All rights reserved.<br><br>
+                This document contains confidential financial projections and forward-looking statements based on conservative assumptions. Actual results may differ materially. The financial models presented are based on verified market data and operational expertise. For qualified infrastructure investors only.
+            </div>
+        </div>
+    </div>
+</body>
+</html>

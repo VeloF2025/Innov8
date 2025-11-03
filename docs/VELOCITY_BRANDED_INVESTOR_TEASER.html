@@ -41,16 +41,34 @@
         }
 
         .logo-mark {
-            width: 220px;
+            width: 280px;
             height: auto;
             margin: 0 auto 15px;
             display: block;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            box-shadow:
+                0 8px 32px rgba(0, 0, 0, 0.3),
+                0 0 20px rgba(139, 58, 58, 0.4),
+                inset 0 1px 1px rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .logo-mark:hover {
+            transform: scale(1.05);
+            box-shadow:
+                0 12px 40px rgba(0, 0, 0, 0.4),
+                0 0 30px rgba(139, 58, 58, 0.6),
+                inset 0 1px 1px rgba(255, 255, 255, 0.15);
         }
 
         .logo-mark img {
             width: 100%;
             height: auto;
             display: block;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
         }
 
         .company-name {
@@ -312,6 +330,11 @@
 
         /* Responsive */
         @media (max-width: 768px) {
+            .logo-mark {
+                width: 240px;
+                padding: 15px;
+            }
+
             .company-name {
                 font-size: 36px;
             }

@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VeloCity Fibre Investment Opportunity</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #1F2937;
+            margin: 0;
+            padding: 0;
+            background-color: #F9FAFB;
+        }
+
+        .email-container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: white;
+            border: 1px solid #E5E7EB;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #001F5C 0%, #0B1E3F 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            border-bottom: 4px solid #8B3A3A;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 15px;
+            background: linear-gradient(135deg, #001F5C, #8B3A3A);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            font-weight: bold;
+        }
+
+        .company-name {
+            font-size: 32px;
+            font-weight: 700;
+            margin: 10px 0 5px 0;
+        }
+
+        .company-tagline {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Body */
+        .body {
+            padding: 30px 25px;
+        }
+
+        .greeting {
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .opening-paragraph {
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .highlight {
+            background-color: #F3F4F6;
+            border-left: 4px solid #8B3A3A;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .highlight-title {
+            font-weight: 700;
+            color: #001F5C;
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+
+        .metrics {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .metric {
+            background: #F3F4F6;
+            padding: 15px;
+            border-radius: 4px;
+            border-top: 3px solid #8B3A3A;
+        }
+
+        .metric-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: #8B3A3A;
+            line-height: 1.2;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: #9CA3AF;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 5px;
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, #001F5C, #0B1E3F);
+            color: white;
+            padding: 25px;
+            border-radius: 8px;
+            text-align: center;
+            margin: 25px 0;
+        }
+
+        .cta-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .cta-text {
+            font-size: 14px;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #8B3A3A;
+            color: white;
+            padding: 12px 28px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 14px;
+            margin: 5px;
+            transition: background 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: #6B2A2A;
+        }
+
+        .key-points {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        .key-points li {
+            padding: 10px 0 10px 30px;
+            position: relative;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .key-points li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #8B3A3A;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .closing-paragraph {
+            margin: 25px 0;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .signature {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #E5E7EB;
+        }
+
+        .signature-name {
+            font-weight: 700;
+            color: #001F5C;
+            margin-bottom: 5px;
+        }
+
+        .signature-title {
+            font-size: 13px;
+            color: #9CA3AF;
+            margin-bottom: 10px;
+        }
+
+        .signature-contact {
+            font-size: 13px;
+            color: #8B3A3A;
+        }
+
+        .signature-contact a {
+            color: #8B3A3A;
+            text-decoration: none;
+        }
+
+        /* Footer */
+        .footer {
+            background: #001F5C;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 12px;
+            border-top: 4px solid #8B3A3A;
+        }
+
+        .footer-text {
+            margin: 5px 0;
+        }
+
+        .footer-link {
+            color: #8B3A3A;
+            text-decoration: none;
+        }
+
+        .footer-disclaimer {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.8);
+            font-style: italic;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .email-container {
+                margin: 0;
+                border-radius: 0;
+            }
+
+            .header {
+                padding: 20px;
+            }
+
+            .company-name {
+                font-size: 24px;
+            }
+
+            .body {
+                padding: 20px 15px;
+            }
+
+            .metrics {
+                grid-template-columns: 1fr;
+            }
+
+            .metric-value {
+                font-size: 20px;
+            }
+
+            .cta-button {
+                display: block;
+                margin: 8px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">V</div>
+            <div class="company-name">VELOCITY FIBRE</div>
+            <div class="company-tagline">Building Essential Digital Infrastructure</div>
+        </div>
+
+        <!-- Body -->
+        <div class="body">
+            <div class="greeting">
+                Dear [Investor Name],
+            </div>
+
+            <div class="opening-paragraph">
+                We are pleased to present an exceptional infrastructure investment opportunity in South Africa's digital transformation. VeloCity Fibre is building fiber network infrastructure in underserved township markets, targeting <strong>60-77% annual yields</strong> through a proven Build-Operate-Maintain model.
+            </div>
+
+            <!-- Key Metrics -->
+            <div class="highlight">
+                <div class="highlight-title">Investment Highlights</div>
+                <div class="metrics">
+                    <div class="metric">
+                        <div class="metric-value">60.4%</div>
+                        <div class="metric-label">Year 1 Yield</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">1.7 yrs</div>
+                        <div class="metric-label">Payback Period</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">R810M</div>
+                        <div class="metric-label">Total Investment</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">240K</div>
+                        <div class="metric-label">Homes (Year 3)</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Key Points -->
+            <div class="closing-paragraph" style="margin-top: 20px; margin-bottom: 15px;">
+                <strong>Why VeloCity Now:</strong>
+            </div>
+            <ul class="key-points">
+                <li>4.2M underserved township households with &lt;10% fiber coverage</li>
+                <li>Single projects viable (60.4% yield, 1.7-year payback)</li>
+                <li>Hub & Spoke model delivers -44% OPEX efficiency by Year 3</li>
+                <li>Closed-access network (FNO + ISP model) controls full value chain</li>
+                <li>All scenarios profitable, even conservative cases</li>
+                <li>Experienced FNO/ISP executive team with track record</li>
+            </ul>
+
+            <!-- CTA -->
+            <div class="cta-box">
+                <div class="cta-title">Ready to Explore?</div>
+                <div class="cta-text">
+                    We invite qualified infrastructure investors to review our comprehensive financial model and discuss investment terms.
+                </div>
+                <a href="mailto:lew@velocityfibre.co.za?subject=VeloCity%20Fibre%20Investment%20Inquiry" class="cta-button">Contact CEO</a>
+                <a href="mailto:lourens@velocityfibre.co.za?subject=VeloCity%20Fibre%20Investment%20Inquiry" class="cta-button">Contact CFO</a>
+            </div>
+
+            <!-- Closing -->
+            <div class="closing-paragraph">
+                Our executive team is prepared to discuss:
+            </div>
+            <ul class="key-points">
+                <li>Detailed financial models with sensitivity analysis</li>
+                <li>Market research and township demographic data</li>
+                <li>Operational roadmap and deployment timeline</li>
+                <li>Risk assessment and mitigation strategies</li>
+                <li>Investment terms and exit pathways</li>
+            </ul>
+
+            <div class="closing-paragraph">
+                We believe this represents a compelling infrastructure opportunity aligned with digital transformation trends in emerging markets. We look forward to your interest.
+            </div>
+
+            <!-- Signature -->
+            <div class="signature">
+                <div class="signature-name">Llewelyn Hofmeyr</div>
+                <div class="signature-title">CEO (Managing Director)</div>
+                <div class="signature-contact">
+                    <strong>VeloCity Fibre Networks</strong><br>
+                    📧 <a href="mailto:lew@velocityfibre.co.za">lew@velocityfibre.co.za</a><br>
+                    🌐 www.velocityfibre.co.za
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-text"><strong>VeloCity Fibre Networks (Pty) Ltd</strong></div>
+            <div class="footer-text">Infrastructure Investment Opportunity</div>
+            <div class="footer-text">
+                <a href="mailto:investors@velocityfibre.co.za" class="footer-link">investors@velocityfibre.co.za</a> |
+                <a href="http://www.velocityfibre.co.za" class="footer-link">www.velocityfibre.co.za</a>
+            </div>
+            <div class="footer-disclaimer">
+                This email and attached documents are confidential and intended solely for qualified infrastructure investors. If you are not the intended recipient, please delete this message.
+            </div>
+        </div>
+    </div>
+</body>
+</html>

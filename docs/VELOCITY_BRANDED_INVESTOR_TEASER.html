@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VeloCity Fibre - Infrastructure Investment Opportunity</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-navy: #001F5C;
+            --accent-burgundy: #8B3A3A;
+            --secondary-gray: #9CA3AF;
+            --light-gray: #F3F4F6;
+            --dark-text: #1F2937;
+            --border-color: #E5E7EB;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            background-color: #FFFFFF;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--primary-navy) 0%, #0B1E3F 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 4px solid var(--accent-burgundy);
+        }
+
+        .logo-container {
+            margin-bottom: 30px;
+        }
+
+        .logo-mark {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, var(--primary-navy), var(--accent-burgundy));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .company-name {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+        }
+
+        .company-tagline {
+            font-size: 18px;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 5px;
+        }
+
+        .document-type {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 15px;
+            font-style: italic;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .section {
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary-navy);
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 4px solid var(--accent-burgundy);
+            display: inline-block;
+        }
+
+        /* Investment Snapshot */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .metric-card {
+            background: var(--light-gray);
+            border-left: 4px solid var(--accent-burgundy);
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .metric-label {
+            font-size: 13px;
+            color: var(--secondary-gray);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .metric-value {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--accent-burgundy);
+            line-height: 1.2;
+        }
+
+        .metric-context {
+            font-size: 12px;
+            color: var(--secondary-gray);
+            margin-top: 8px;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+        }
+
+        th {
+            background: var(--primary-navy);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        td {
+            padding: 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        tr:hover {
+            background-color: var(--light-gray);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Emphasis Boxes */
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(0, 31, 92, 0.05), rgba(139, 58, 58, 0.05));
+            border-left: 4px solid var(--accent-burgundy);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .highlight-box strong {
+            color: var(--primary-navy);
+        }
+
+        /* Features List */
+        .features-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .features-list li {
+            padding: 12px 0;
+            padding-left: 30px;
+            position: relative;
+            color: var(--dark-text);
+        }
+
+        .features-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent-burgundy);
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        /* Call to Action */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-navy), #0B1E3F);
+            color: white;
+            padding: 40px;
+            border-radius: 8px;
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .cta-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .cta-text {
+            font-size: 16px;
+            margin-bottom: 25px;
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--accent-burgundy);
+            color: white;
+            padding: 14px 32px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            margin: 10px 10px;
+            transition: background 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: #6B2A2A;
+        }
+
+        /* Team Section */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .team-member {
+            background: var(--light-gray);
+            padding: 20px;
+            border-radius: 8px;
+            border-top: 3px solid var(--accent-burgundy);
+        }
+
+        .team-name {
+            font-weight: 700;
+            color: var(--primary-navy);
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .team-role {
+            font-size: 13px;
+            color: var(--secondary-gray);
+            margin-bottom: 8px;
+        }
+
+        .team-contact {
+            font-size: 12px;
+            color: var(--accent-burgundy);
+            word-break: break-word;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary-navy);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 50px;
+            border-top: 4px solid var(--accent-burgundy);
+        }
+
+        .footer-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .footer-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .footer-contact {
+            margin: 15px 0;
+            font-size: 14px;
+        }
+
+        .footer-contact a {
+            color: var(--accent-burgundy);
+            text-decoration: none;
+        }
+
+        .footer-disclaimer {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.8);
+            font-style: italic;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .company-name {
+                font-size: 36px;
+            }
+
+            .section-title {
+                font-size: 22px;
+            }
+
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .metric-value {
+                font-size: 24px;
+            }
+
+            table {
+                font-size: 12px;
+            }
+
+            th, td {
+                padding: 10px;
+            }
+
+            .cta-section {
+                padding: 30px 20px;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+            }
+
+            .page-break {
+                page-break-after: always;
+            }
+
+            a {
+                color: var(--primary-navy);
+                text-decoration: none;
+            }
+
+            .header {
+                margin: 0;
+                padding: 20px;
+            }
+
+            .cta-button {
+                border: 2px solid var(--accent-burgundy);
+                background: transparent;
+                color: var(--accent-burgundy);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="logo-container">
+            <div class="logo-mark">V</div>
+            <div class="company-name">VELOCITY</div>
+            <div style="font-size: 20px; color: var(--secondary-gray); letter-spacing: 2px;">FIBRE</div>
+        </div>
+        <div class="company-tagline">Connecting Communities at the Speed of Light</div>
+        <div class="document-type">CONFIDENTIAL INVESTMENT OPPORTUNITY - 2025</div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- About VeloCity -->
+        <div class="section">
+            <h2 class="section-title">🏢 About VeloCity</h2>
+            <div style="background: var(--light-gray); padding: 25px; border-radius: 8px; border-left: 4px solid var(--accent-burgundy); margin-bottom: 25px;">
+                <h3 style="color: var(--primary-navy); font-size: 16px; margin-bottom: 12px; font-weight: 600;">Strategic Alliance of Industry Veterans</h3>
+                <p style="color: var(--dark-text); line-height: 1.7; margin-bottom: 15px;">
+                    VeloCity Fibre Networks is built by deep telecommunications experts combining decades of fiber network operations experience. Founded in 2025, we bring together industry veterans from leading FNO and ISP operators to address South Africa's digital divide while generating exceptional infrastructure yields.
+                </p>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
+                    <div>
+                        <div style="color: var(--accent-burgundy); font-weight: 600; font-size: 13px; text-transform: uppercase; margin-bottom: 5px;">Headquarters</div>
+                        <div style="color: var(--dark-text);">Cape Town, South Africa</div>
+                    </div>
+                    <div>
+                        <div style="color: var(--accent-burgundy); font-weight: 600; font-size: 13px; text-transform: uppercase; margin-bottom: 5px;">Business Model</div>
+                        <div style="color: var(--dark-text);">Build-Operate-Maintain FNO+ISP</div>
+                    </div>
+                    <div>
+                        <div style="color: var(--accent-burgundy); font-weight: 600; font-size: 13px; text-transform: uppercase; margin-bottom: 5px;">Market Focus</div>
+                        <div style="color: var(--dark-text);">4.2M township households</div>
+                    </div>
+                    <div>
+                        <div style="color: var(--accent-burgundy); font-weight: 600; font-size: 13px; text-transform: uppercase; margin-bottom: 5px;">Website</div>
+                        <div style="color: var(--accent-burgundy); text-decoration: none;">www.velocityfibre.co.za</div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-bottom: 25px;">
+                <div>
+                    <h3 style="color: var(--primary-navy); font-size: 14px; margin-bottom: 10px; font-weight: 600;">🎯 Our Mission</h3>
+                    <p style="color: var(--dark-text); line-height: 1.6; font-size: 14px;">
+                        Bridge the digital divide by bringing high-speed internet to underserved communities, transforming lives through connectivity and enabling economic growth and empowerment.
+                    </p>
+                </div>
+                <div>
+                    <h3 style="color: var(--primary-navy); font-size: 14px; margin-bottom: 10px; font-weight: 600;">🌟 Our Vision</h3>
+                    <p style="color: var(--dark-text); line-height: 1.6; font-size: 14px;">
+                        Become Africa's leading fiber network operator, recognized for innovation, reliability, and unwavering commitment to digital inclusion and community empowerment.
+                    </p>
+                </div>
+            </div>
+
+            <div style="background: var(--light-gray); padding: 20px; border-radius: 8px;">
+                <h3 style="color: var(--primary-navy); font-size: 14px; margin-bottom: 15px; font-weight: 600;">✅ Competitive Advantages</h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; font-size: 14px;">
+                    <div style="display: flex; align-items: flex-start;">
+                        <span style="color: var(--accent-burgundy); margin-right: 8px; font-weight: bold;">✓</span>
+                        <div>
+                            <div style="color: var(--primary-navy); font-weight: 600; margin-bottom: 2px;">Township Focus</div>
+                            <div style="color: var(--secondary-gray);">Underserved <10% vs 35% national avg</div>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: flex-start;">
+                        <span style="color: var(--accent-burgundy); margin-right: 8px; font-weight: bold;">✓</span>
+                        <div>
+                            <div style="color: var(--primary-navy); font-weight: 600; margin-bottom: 2px;">Industry Expertise</div>
+                            <div style="color: var(--secondary-gray);">Deep telecom track record</div>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: flex-start;">
+                        <span style="color: var(--accent-burgundy); margin-right: 8px; font-weight: bold;">✓</span>
+                        <div>
+                            <div style="color: var(--primary-navy); font-weight: 600; margin-bottom: 2px;">Integrated Model</div>
+                            <div style="color: var(--secondary-gray);">FNO + ISP value chain control</div>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: flex-start;">
+                        <span style="color: var(--accent-burgundy); margin-right: 8px; font-weight: bold;">✓</span>
+                        <div>
+                            <div style="color: var(--primary-navy); font-weight: 600; margin-bottom: 2px;">Operational Excellence</div>
+                            <div style="color: var(--secondary-gray);">Hub & Spoke 44% OPEX scaling</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Investment Snapshot -->
+        <div class="section">
+            <h2 class="section-title">📊 Investment Snapshot</h2>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-label">Year 1 Yield</div>
+                    <div class="metric-value">60.4%</div>
+                    <div class="metric-context">4 projects, R135M investment</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Year 3 Yield</div>
+                    <div class="metric-value">66.7%</div>
+                    <div class="metric-context">24 projects, R810M total</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Single Project Payback</div>
+                    <div class="metric-value">1.7 years</div>
+                    <div class="metric-context">Base case (70% penetration)</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Mature Yield</div>
+                    <div class="metric-value">77.1%</div>
+                    <div class="metric-context">Optimized operations, 8K+ ONTs</div>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <strong>Key Highlights:</strong> Build-Operate-Maintain fiber infrastructure generating exceptional yields through Hub & Spoke efficiency model and contractor field operations.
+            </div>
+        </div>
+
+        <!-- Market Opportunity -->
+        <div class="section">
+            <h2 class="section-title">🎯 Market Opportunity</h2>
+            <p>VeloCity targets South Africa's underserved township markets with exceptional growth potential:</p>
+            <ul class="features-list">
+                <li><strong>4.2 million households</strong> addressable in target townships (verified data)</li>
+                <li><strong>&lt;10% current coverage</strong> vs 35% national average = massive gap</li>
+                <li><strong>18% annual growth</strong> in township connectivity demand</li>
+                <li><strong>Premium providers</strong> ignore townships - VeloCity fills the gap</li>
+            </ul>
+        </div>
+
+        <!-- Business Model -->
+        <div class="section">
+            <h2 class="section-title">🏗️ Build-Operate-Maintain Model</h2>
+            <p><strong>Closed-Access FNO + ISP Model:</strong></p>
+            <ul class="features-list">
+                <li>VeloCity is both Fiber Network Operator (FNO) and ISP</li>
+                <li>Complete control of value chain from infrastructure to customer service</li>
+                <li>Hub & Spoke architecture with shared management teams</li>
+                <li>Contractor field operations (fixed pre-80%, performance-based post-80%)</li>
+                <li>20+ year fiber infrastructure asset life</li>
+            </ul>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Year</th>
+                        <th>Projects</th>
+                        <th>Homes</th>
+                        <th>Investment</th>
+                        <th>Yield</th>
+                        <th>Monthly Cash Flow</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Year 1</strong></td>
+                        <td>4</td>
+                        <td>40,000</td>
+                        <td>R135M</td>
+                        <td><strong style="color: var(--accent-burgundy);">60.4%</strong></td>
+                        <td>R6.8M</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Year 2</strong></td>
+                        <td>12</td>
+                        <td>120,000</td>
+                        <td>R405M</td>
+                        <td><strong style="color: var(--accent-burgundy);">65.3%</strong></td>
+                        <td>R22.15M</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Year 3</strong></td>
+                        <td>24</td>
+                        <td>240,000</td>
+                        <td>R810M</td>
+                        <td><strong style="color: var(--accent-burgundy);">66.7%</strong></td>
+                        <td>R45.04M</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Mature</strong></td>
+                        <td>24</td>
+                        <td>240,000</td>
+                        <td>Maintenance</td>
+                        <td><strong style="color: var(--accent-burgundy);">77.1%</strong></td>
+                        <td>R52.24M</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Single Project Economics -->
+        <div class="section">
+            <h2 class="section-title">💰 Exceptional Single Project Economics</h2>
+            <div class="highlight-box">
+                <strong>Base Case:</strong> 10,000 door deployment at 70% ONT penetration (7,000 activated), R10/day rate
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Monthly Revenue</td>
+                        <td><strong>R2.1M</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Monthly OPEX (Hub Allocation)</td>
+                        <td><strong>R400K</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Monthly Cash Flow</td>
+                        <td><strong style="color: var(--accent-burgundy); font-size: 18px;">R1.7M</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Annual Yield</strong></td>
+                        <td><strong style="color: var(--accent-burgundy); font-size: 20px;">60.4%</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Payback Period</strong></td>
+                        <td><strong style="color: var(--accent-burgundy); font-size: 20px;">1.7 years</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>5-Year ROI</strong></td>
+                        <td><strong style="color: var(--accent-burgundy); font-size: 20px;">302%</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- De-Risking Factors -->
+        <div class="section">
+            <h2 class="section-title">🛡️ De-Risking Factors</h2>
+            <ul class="features-list">
+                <li><strong>Closed-access network</strong> - No wholesale partner dependency</li>
+                <li><strong>Essential service</strong> - Digital connectivity positioning</li>
+                <li><strong>Pre-identified townships</strong> with municipal partnership letters</li>
+                <li><strong>Proven operations model</strong> - Hub & Spoke with contractor efficiency</li>
+                <li><strong>All scenarios profitable</strong> - Even 60% penetration at R7.50/day</li>
+                <li><strong>Experienced team</strong> - FNO/ISP leadership with execution track record</li>
+            </ul>
+        </div>
+
+        <!-- Executive Team -->
+        <div class="section">
+            <h2 class="section-title">👥 Executive Leadership</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="team-name">Llewelyn Hofmeyr</div>
+                    <div class="team-role">CEO (Managing Director)</div>
+                    <div class="team-contact">Ex-COO major FNO, MTN Metro project leader</div>
+                    <div class="team-contact">✉️ lew@velocityfibre.co.za</div>
+                </div>
+                <div class="team-member">
+                    <div class="team-name">Lourens Kleynhans</div>
+                    <div class="team-role">CFO</div>
+                    <div class="team-contact">Financial strategy & investor relations specialist</div>
+                    <div class="team-contact">✉️ lourens@velocityfibre.co.za</div>
+                </div>
+                <div class="team-member">
+                    <div class="team-name">Hein van Vuuren</div>
+                    <div class="team-role">CCSO</div>
+                    <div class="team-contact">Chief Commercial & Strategy Officer</div>
+                    <div class="team-contact">✉️ hein@velocityfibre.co.za</div>
+                </div>
+                <div class="team-member">
+                    <div class="team-name">Marco Devenier</div>
+                    <div class="team-role">Business Development</div>
+                    <div class="team-contact">Market expansion & partnerships lead</div>
+                    <div class="team-contact">✉️ marco@velocityfibre.co.za</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="cta-section">
+            <div class="cta-title">Ready to Explore This Opportunity?</div>
+            <div class="cta-text">Contact our executive team to discuss investment terms, receive detailed financial models, and arrange management presentations.</div>
+            <a href="mailto:lew@velocityfibre.co.za?subject=VeloCity%20Fibre%20Infrastructure%20Investment%20Inquiry" class="cta-button">Contact CEO</a>
+            <a href="mailto:lourens@velocityfibre.co.za?subject=VeloCity%20Fibre%20Infrastructure%20Investment%20Inquiry" class="cta-button">Contact CFO</a>
+        </div>
+
+        <!-- Investment Process -->
+        <div class="section">
+            <h2 class="section-title">🚀 Investment Process</h2>
+            <ol style="margin-left: 20px; line-height: 2;">
+                <li><strong>Initial Review</strong> - Review this teaser and executive summary</li>
+                <li><strong>Contact Executive Team</strong> - Discuss investment interest and timeline</li>
+                <li><strong>Due Diligence</strong> - Access comprehensive financial model and market research</li>
+                <li><strong>Management Presentations</strong> - Meet team and discuss operational plans</li>
+                <li><strong>Investment Decision</strong> - Finalize terms and investment structure</li>
+            </ol>
+        </div>
+
+        <!-- Key Assumptions -->
+        <div class="section">
+            <h2 class="section-title">📊 Key Assumptions (Conservative & Validated)</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Assumption</th>
+                        <th>Value</th>
+                        <th>Validation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Monthly OPEX (Y1/project)</td>
+                        <td>R400K</td>
+                        <td>Hub-based allocation across 4 projects</td>
+                    </tr>
+                    <tr>
+                        <td>ONT Penetration</td>
+                        <td>70% baseline</td>
+                        <td>Conservative for township markets</td>
+                    </tr>
+                    <tr>
+                        <td>Revenue Model</td>
+                        <td>R10/ONT/day</td>
+                        <td>Closed-access network tiered service</td>
+                    </tr>
+                    <tr>
+                        <td>Asset Life</td>
+                        <td>20+ years</td>
+                        <td>Fiber infrastructure standard</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer-content">
+            <div class="footer-title">VeloCity Fibre Networks</div>
+            <div class="footer-contact">
+                <strong>Investor Relations:</strong> <a href="mailto:investors@velocityfibre.co.za">investors@velocityfibre.co.za</a>
+            </div>
+            <div class="footer-contact">
+                <strong>Website:</strong> <a href="http://www.velocityfibre.co.za">www.velocityfibre.co.za</a>
+            </div>
+            <div class="footer-contact">
+                <strong>Headquarters:</strong> South Africa
+            </div>
+            <div class="footer-disclaimer">
+                © 2025 VeloCity Fibre Networks (Pty) Ltd. All rights reserved.<br><br>
+                This document is confidential and intended solely for qualified infrastructure investors. It contains forward-looking statements based on reasonable assumptions. Actual results may differ materially. For qualified investors only.
+            </div>
+        </div>
+    </div>
+</body>
+</html>

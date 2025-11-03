@@ -774,60 +774,180 @@
                     <tr>
                         <td><strong>Year 1</strong></td>
                         <td>4 (1 per quarter)</td>
-                        <td>R33.75M</td>
-                        <td>R135M</td>
-                        <td>R135M</td>
+                        <td>R48.3M</td>
+                        <td>R193.2M</td>
+                        <td>R193.2M</td>
                     </tr>
                     <tr>
                         <td><strong>Year 2</strong></td>
                         <td>8 (2 per quarter)</td>
-                        <td>R33.75M</td>
-                        <td>R270M</td>
-                        <td>R405M</td>
+                        <td>R48.3M</td>
+                        <td>R386.4M</td>
+                        <td>R579.6M</td>
                     </tr>
                     <tr>
                         <td><strong>Year 3</strong></td>
                         <td>12 (3 per quarter)</td>
-                        <td>R33.75M</td>
-                        <td>R405M</td>
-                        <td>R810M</td>
+                        <td>R48.3M</td>
+                        <td>R579.6M</td>
+                        <td>R1,159.2M</td>
                     </tr>
                 </tbody>
             </table>
 
-            <div class="subsection-title">Per-Project Capital Requirement Breakdown</div>
+            <div class="subsection-title">Per-Project Capital Requirement Breakdown (at 80% Penetration)</div>
             <table>
                 <thead>
                     <tr>
                         <th>Component</th>
+                        <th>Calculation</th>
                         <th>Cost</th>
                         <th>Notes</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Fiber Network (20km, 10K doors)</td>
-                        <td>R13.5M</td>
-                        <td>GPON headend, fiber roll, splitters, cabinets</td>
+                        <td><strong>Contractor Payments</strong></td>
+                        <td>8,000 homes × R2,700</td>
+                        <td><strong>R21.6M</strong></td>
+                        <td>Paid within 2 weeks of activation. Distributed over months 3-9 as homes activated.</td>
                     </tr>
                     <tr>
-                        <td>Initial ONT Provisioning (300 units)</td>
-                        <td>R1.8M</td>
-                        <td>Equipment for early adopter phase</td>
+                        <td><strong>ONT & Router Hardware</strong></td>
+                        <td>8,000 homes × R750</td>
+                        <td><strong>R6.0M</strong></td>
+                        <td>Paid within 2 weeks of activation. Distributed over months 3-9.</td>
                     </tr>
                     <tr>
-                        <td>Regional Hub Share</td>
-                        <td>R8.5M</td>
-                        <td>NOC, management office, shared equipment</td>
+                        <td>Node Setup (one-off)</td>
+                        <td>Fixed cost</td>
+                        <td>R10.0M</td>
+                        <td>Upfront month 1. GPON headend, fiber roll, splitters, cabinets.</td>
                     </tr>
                     <tr>
-                        <td>Working Capital</td>
-                        <td>R9.4M</td>
-                        <td>Operating runway (2 months OPEX + contingency)</td>
+                        <td>Backhaul (one-off)</td>
+                        <td>Fixed cost</td>
+                        <td>R0.3M</td>
+                        <td>Upfront month 1. Connection to regional backbone.</td>
                     </tr>
                     <tr>
-                        <td colspan="2"><strong>Total per Project</strong></td>
-                        <td><strong>R33.75M</strong></td>
+                        <td><strong>Working Capital Buffer</strong></td>
+                        <td>Peak cumulative shortfall + R5M</td>
+                        <td><strong>R38.0M</strong></td>
+                        <td>Covers cash flow gap during months 1-9 when contractor/ONT costs exceed revenue. Ensures R5M buffer always available.</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3"><strong>Total per Project (R48.3M)</strong></td>
+                        <td><strong>Recovers gradually as project becomes cash flow positive (month 10+)</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="subsection-title">Working Capital Drawdown Timeline</div>
+            <p style="margin-bottom: 15px;">Critical insight: Working capital requirement peaks at Month 9 when cumulative contractor + ONT payments (R27M) exceed cumulative revenue (R6.4M). The R38M buffer ensures we never go into shortfall:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Month</th>
+                        <th>Activations</th>
+                        <th>Revenue</th>
+                        <th>Contractor Cost</th>
+                        <th>ONT Cost</th>
+                        <th>OPEX</th>
+                        <th>Monthly Net</th>
+                        <th>Cumulative (with R38M buffer)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1-2</td>
+                        <td>0</td>
+                        <td>R0</td>
+                        <td>R0</td>
+                        <td>R0</td>
+                        <td>R800K</td>
+                        <td>-R800K</td>
+                        <td>R37.2M available</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>1,100</td>
+                        <td>R115K</td>
+                        <td>R2.97M</td>
+                        <td>R825K</td>
+                        <td>R400K</td>
+                        <td>-R4.08M</td>
+                        <td>R33.1M available</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>1,100</td>
+                        <td>R231K</td>
+                        <td>R2.97M</td>
+                        <td>R825K</td>
+                        <td>R400K</td>
+                        <td>-R3.96M</td>
+                        <td>R29.1M available</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>1,100</td>
+                        <td>R495K</td>
+                        <td>R2.97M</td>
+                        <td>R825K</td>
+                        <td>R400K</td>
+                        <td>-R3.7M</td>
+                        <td>R25.4M available</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>1,100</td>
+                        <td>R660K</td>
+                        <td>R2.97M</td>
+                        <td>R825K</td>
+                        <td>R400K</td>
+                        <td>-R3.54M</td>
+                        <td>R21.9M available</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>1,100</td>
+                        <td>R1.24M</td>
+                        <td>R2.97M</td>
+                        <td>R825K</td>
+                        <td>R400K</td>
+                        <td>-R2.96M</td>
+                        <td>R18.9M available</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>1,100</td>
+                        <td>R1.49M</td>
+                        <td>R2.97M</td>
+                        <td>R825K</td>
+                        <td>R400K</td>
+                        <td>-R2.71M</td>
+                        <td>R16.2M available</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>800</td>
+                        <td>R2.22M</td>
+                        <td>R2.16M</td>
+                        <td>R600K</td>
+                        <td>R400K</td>
+                        <td>-R0.94M</td>
+                        <td>R15.3M available (peak)</td>
+                    </tr>
+                    <tr>
+                        <td>10+</td>
+                        <td>300</td>
+                        <td>R2.4M</td>
+                        <td>R810K</td>
+                        <td>R225K</td>
+                        <td>R400K</td>
+                        <td>+R965K</td>
+                        <td>Buffer recovered over time</td>
                     </tr>
                 </tbody>
             </table>

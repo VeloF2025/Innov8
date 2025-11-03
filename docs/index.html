@@ -255,6 +255,44 @@
             font-size: 13px;
         }
 
+        /* Currency Toggle */
+        .currency-toggle {
+            display: inline-flex;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            padding: 4px;
+            margin-top: 20px;
+        }
+
+        .currency-toggle-btn {
+            padding: 8px 16px;
+            border: none;
+            background: transparent;
+            color: white;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .currency-toggle-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .currency-toggle-btn.active {
+            background: var(--accent-burgundy);
+            color: white;
+            box-shadow: 0 4px 12px rgba(139, 58, 58, 0.3);
+        }
+
+        .exchange-rate-info {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 12px;
+            font-style: italic;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .header {
@@ -276,6 +314,10 @@
             .footer {
                 padding: 20px;
             }
+
+            .currency-toggle {
+                margin-top: 15px;
+            }
         }
     </style>
 </head>
@@ -287,6 +329,13 @@
                 <img src="velocity-fibre-logo-white.png" alt="VeloCity Fibre Networks Logo">
             </div>
             <p class="subtitle">Infrastructure Investment Opportunity - 2025</p>
+            <div class="currency-toggle">
+                <button class="currency-toggle-btn active" data-currency="ZAR">R - Rand</button>
+                <button class="currency-toggle-btn" data-currency="USD">$ - USD</button>
+            </div>
+            <div class="exchange-rate-info">
+                Current rate: <span id="exchange-rate-display">Loading...</span>
+            </div>
         </div>
 
         <!-- Welcome Section -->
@@ -355,10 +404,10 @@
             <div class="info-section">
                 <h3>💰 Key Financial Metrics (Master Model - Realistic Ramp)</h3>
                 <p style="margin-bottom: 0;"><strong>Portfolio Yields (Blended):</strong> 34.5% Year 1 | 35.2% Year 2 | 52.8% Year 3 | 71.1% Mature (at 8K ONTs)</p>
-                <p style="margin-bottom: 0;"><strong>Per-Project Investment:</strong> R48.3M (R10.3M capex + R38M working capital for ramp)</p>
+                <p style="margin-bottom: 0;"><strong>Per-Project Investment:</strong> <span data-currency-zar="48300000">R48.3M</span> (R10.3M capex + R38M working capital for ramp)</p>
                 <p style="margin-bottom: 0;"><strong>Cumulative Payback:</strong> ~20 months per project (includes 2-month setup + gradual revenue ramp)</p>
                 <p style="margin-bottom: 0;"><strong>Operational Breakeven:</strong> Month 5 (1,100 ONTs activated @ tiered pricing)</p>
-                <p><strong>Investment Required:</strong> R1,159.2M for 24 projects over 3 years (Y1: R193.2M | Y2: R386.4M | Y3: R579.6M)</p>
+                <p><strong>Investment Required:</strong> <span data-currency-zar="1159200000">R1,159.2M</span> for 24 projects over 3 years (Y1: <span data-currency-zar="193200000">R193.2M</span> | Y2: <span data-currency-zar="386400000">R386.4M</span> | Y3: <span data-currency-zar="579600000">R579.6M</span>)</p>
             </div>
         </div>
 
@@ -373,5 +422,7 @@
             </div>
         </div>
     </div>
+
+    <script src="currency-converter.js"></script>
 </body>
 </html>

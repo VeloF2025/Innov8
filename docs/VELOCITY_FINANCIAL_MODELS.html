@@ -333,6 +333,44 @@
                 page-break-inside: avoid;
             }
         }
+
+        /* Currency Toggle */
+        .currency-toggle {
+            display: inline-flex;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            padding: 4px;
+            margin-top: 15px;
+        }
+
+        .currency-toggle-btn {
+            padding: 8px 16px;
+            border: none;
+            background: transparent;
+            color: white;
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .currency-toggle-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .currency-toggle-btn.active {
+            background: var(--accent-burgundy);
+            color: white;
+            box-shadow: 0 4px 12px rgba(139, 58, 58, 0.3);
+        }
+
+        .exchange-rate-info {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 8px;
+            font-style: italic;
+        }
     </style>
 </head>
 <body>
@@ -346,6 +384,13 @@
         <div class="company-name">Financial Models</div>
         <div class="company-tagline">Infrastructure Investment Opportunity - 2025</div>
         <div class="document-type">CONFIDENTIAL - FINANCIAL PROJECTIONS & ANALYSIS</div>
+        <div class="currency-toggle">
+            <button class="currency-toggle-btn active" data-currency="ZAR">R - Rand</button>
+            <button class="currency-toggle-btn" data-currency="USD">$ - USD</button>
+        </div>
+        <div class="exchange-rate-info">
+            Current rate: <span id="exchange-rate-display">Loading...</span>
+        </div>
     </div>
 
     <!-- Navigation -->
@@ -417,24 +462,24 @@
                     </tr>
                     <tr>
                         <td><span class="label-bold">Total Investment Required (R)</span></td>
-                        <td class="currency">R193,200,000</td>
-                        <td class="currency">R579,600,000</td>
-                        <td class="currency">R1,159,200,000</td>
+                        <td class="currency" data-currency-zar="193200000">R193,200,000</td>
+                        <td class="currency" data-currency-zar="579600000">R579,600,000</td>
+                        <td class="currency" data-currency-zar="1159200000">R1,159,200,000</td>
                         <td class="currency">Maintenance</td>
                     </tr>
                     <tr>
                         <td><span class="label-bold">Total Monthly OPEX</span></td>
-                        <td class="currency">R1,600,000</td>
-                        <td class="currency">R3,150,000</td>
-                        <td class="currency">R5,360,000</td>
-                        <td class="currency">R5,360,000</td>
+                        <td class="currency" data-currency-zar="1600000">R1,600,000</td>
+                        <td class="currency" data-currency-zar="3150000">R3,150,000</td>
+                        <td class="currency" data-currency-zar="5360000">R5,360,000</td>
+                        <td class="currency" data-currency-zar="5360000">R5,360,000</td>
                     </tr>
                     <tr>
                         <td><span class="label-bold">Total Monthly Revenue</span></td>
-                        <td class="currency">R8,400,000</td>
-                        <td class="currency">R25,200,000</td>
-                        <td class="currency">R50,400,000</td>
-                        <td class="currency">R50,400,000</td>
+                        <td class="currency" data-currency-zar="8400000">R8,400,000</td>
+                        <td class="currency" data-currency-zar="25200000">R25,200,000</td>
+                        <td class="currency" data-currency-zar="50400000">R50,400,000</td>
+                        <td class="currency" data-currency-zar="50400000">R50,400,000</td>
                     </tr>
                     <tr>
                         <td><span class="label-bold">Annual Portfolio Yield (Dec Run Rate)</span></td>
@@ -445,10 +490,10 @@
                     </tr>
                     <tr>
                         <td><span class="label-bold">Monthly Cash Flow (Dec Run Rate)</span></td>
-                        <td class="currency">R2,285,000</td>
-                        <td class="currency">R10,285,000</td>
-                        <td class="currency">R35,656,000</td>
-                        <td class="currency">R48,000,000</td>
+                        <td class="currency" data-currency-zar="2285000">R2,285,000</td>
+                        <td class="currency" data-currency-zar="10285000">R10,285,000</td>
+                        <td class="currency" data-currency-zar="35656000">R35,656,000</td>
+                        <td class="currency" data-currency-zar="48000000">R48,000,000</td>
                     </tr>
                 </tbody>
             </table>
@@ -501,81 +546,81 @@
                         <td><span class="label-bold">1-2</span></td>
                         <td class="metric-neutral">0</td>
                         <td>-</td>
-                        <td class="currency">R0</td>
-                        <td class="currency">R400K</td>
-                        <td class="currency">-R400K</td>
-                        <td class="currency">-R800K</td>
+                        <td class="currency" data-currency-zar="0">R0</td>
+                        <td class="currency" data-currency-zar="400000">R400K</td>
+                        <td class="currency" data-currency-zar="-400000">-R400K</td>
+                        <td class="currency" data-currency-zar="-800000">-R800K</td>
                     </tr>
                     <tr style="background: #ffe6e6;">
                         <td><span class="label-bold">3</span></td>
                         <td class="metric-neutral">1,100</td>
                         <td>R3.50</td>
-                        <td class="currency">R115K</td>
-                        <td class="currency">R400K</td>
-                        <td class="currency">-R285K</td>
-                        <td class="currency">-R1.08M</td>
+                        <td class="currency" data-currency-zar="115000">R115K</td>
+                        <td class="currency" data-currency-zar="400000">R400K</td>
+                        <td class="currency" data-currency-zar="-285000">-R285K</td>
+                        <td class="currency" data-currency-zar="-1080000">-R1.08M</td>
                     </tr>
                     <tr style="background: #ffe6e6;">
                         <td><span class="label-bold">4</span></td>
                         <td class="metric-neutral">2,200</td>
                         <td>R3.50</td>
-                        <td class="currency">R231K</td>
-                        <td class="currency">R400K</td>
-                        <td class="currency">-R169K</td>
-                        <td class="currency">-R1.25M</td>
+                        <td class="currency" data-currency-zar="231000">R231K</td>
+                        <td class="currency" data-currency-zar="400000">R400K</td>
+                        <td class="currency" data-currency-zar="-169000">-R169K</td>
+                        <td class="currency" data-currency-zar="-1250000">-R1.25M</td>
                     </tr>
                     <tr style="background: #fff3cd;">
                         <td><span class="label-bold">5</span></td>
                         <td class="metric-neutral">3,300</td>
                         <td>R5.00</td>
-                        <td class="currency">R495K</td>
-                        <td class="currency">R400K</td>
-                        <td style="color: var(--accent-burgundy); font-weight: 600;">+R95K</td>
-                        <td class="currency">-R1.16M</td>
+                        <td class="currency" data-currency-zar="495000">R495K</td>
+                        <td class="currency" data-currency-zar="400000">R400K</td>
+                        <td style="color: var(--accent-burgundy); font-weight: 600;" data-currency-zar="95000">+R95K</td>
+                        <td class="currency" data-currency-zar="-1160000">-R1.16M</td>
                     </tr>
                     <tr>
                         <td><span class="label-bold">6</span></td>
                         <td class="metric-neutral">4,400</td>
                         <td>R5.00</td>
-                        <td class="currency">R660K</td>
-                        <td class="currency">R400K</td>
-                        <td style="color: var(--accent-burgundy); font-weight: 600;">+R260K</td>
-                        <td class="currency">-R900K</td>
+                        <td class="currency" data-currency-zar="660000">R660K</td>
+                        <td class="currency" data-currency-zar="400000">R400K</td>
+                        <td style="color: var(--accent-burgundy); font-weight: 600;" data-currency-zar="260000">+R260K</td>
+                        <td class="currency" data-currency-zar="-900000">-R900K</td>
                     </tr>
                     <tr>
                         <td><span class="label-bold">7</span></td>
                         <td class="metric-neutral">5,500</td>
                         <td>R7.50</td>
-                        <td class="currency">R1.24M</td>
-                        <td class="currency">R400K</td>
-                        <td style="color: var(--accent-burgundy); font-weight: 600;">+R838K</td>
-                        <td class="currency">-R62K</td>
+                        <td class="currency" data-currency-zar="1240000">R1.24M</td>
+                        <td class="currency" data-currency-zar="400000">R400K</td>
+                        <td style="color: var(--accent-burgundy); font-weight: 600;" data-currency-zar="838000">+R838K</td>
+                        <td class="currency" data-currency-zar="-62000">-R62K</td>
                     </tr>
                     <tr>
                         <td><span class="label-bold">8</span></td>
                         <td class="metric-neutral">6,600</td>
                         <td>R7.50</td>
-                        <td class="currency">R1.49M</td>
-                        <td class="currency">R400K</td>
-                        <td class="metric-large">+R1.09M</td>
-                        <td style="color: var(--accent-burgundy); font-weight: 700;">+R1.03M ✓</td>
+                        <td class="currency" data-currency-zar="1490000">R1.49M</td>
+                        <td class="currency" data-currency-zar="400000">R400K</td>
+                        <td class="metric-large" data-currency-zar="1090000">+R1.09M</td>
+                        <td style="color: var(--accent-burgundy); font-weight: 700;" data-currency-zar="1030000">+R1.03M ✓</td>
                     </tr>
                     <tr>
                         <td><span class="label-bold">9</span></td>
                         <td class="metric-neutral">7,700</td>
                         <td>R10.00</td>
-                        <td class="currency">R2.31M</td>
-                        <td class="currency">R400K</td>
-                        <td class="metric-large">+R1.91M</td>
-                        <td class="currency">+R2.94M</td>
+                        <td class="currency" data-currency-zar="2310000">R2.31M</td>
+                        <td class="currency" data-currency-zar="400000">R400K</td>
+                        <td class="metric-large" data-currency-zar="1910000">+R1.91M</td>
+                        <td class="currency" data-currency-zar="2940000">+R2.94M</td>
                     </tr>
                     <tr style="background: var(--light-gray); font-weight: 700;">
                         <td><span class="label-bold">10+</span></td>
                         <td class="metric-neutral">8,000</td>
                         <td>R10.00</td>
-                        <td class="currency">R2.40M</td>
-                        <td class="currency">R400K</td>
-                        <td class="metric-large">+R2.00M</td>
+                        <td class="currency" data-currency-zar="2400000">R2.40M</td>
+                        <td class="currency" data-currency-zar="400000">R400K</td>
+                        <td class="metric-large" data-currency-zar="2000000">+R2.00M</td>
                         <td>Mature (recurring)</td>
                     </tr>
                 </tbody>
@@ -586,8 +631,8 @@
                 <ul style="margin-left: 20px; margin-top: 10px;">
                     <li><strong>Operational Breakeven:</strong> Month 5 (monthly revenue > monthly OPEX)</li>
                     <li><strong>Cumulative Payback:</strong> Month 20 (~20 months total including 2-month setup + 10-month ramp + 8-month post-ramp)</li>
-                    <li><strong>5-Year Cash Generation:</strong> ~R500M+ on R48.3M per-project investment = 1,000%+ total ROI</li>
-                    <li><strong>Mature Yield:</strong> R2.4M/month = 71.1% annual return (R96M annually ÷ R48.3M investment)</li>
+                    <li><strong>5-Year Cash Generation:</strong> ~<span data-currency-zar="500000000">R500M</span>+ on <span data-currency-zar="48300000">R48.3M</span> per-project investment = 1,000%+ total ROI</li>
+                    <li><strong>Mature Yield:</strong> R2.4M/month = 71.1% annual return (<span data-currency-zar="96000000">R96M</span> annually ÷ <span data-currency-zar="48300000">R48.3M</span> investment)</li>
                     <li><strong>Asset Life:</strong> 20+ year fiber infrastructure supports decades of profitable operations beyond Year 5</li>
                 </ul>
             </div>
@@ -613,57 +658,57 @@
                 <tbody>
                     <tr>
                         <td><span class="label-bold">Executive & Management</span></td>
-                        <td class="currency">R310,000</td>
-                        <td class="currency">R3,720,000</td>
+                        <td class="currency" data-currency-zar="310000">R310,000</td>
+                        <td class="currency" data-currency-zar="3720000">R3,720,000</td>
                         <td>19%</td>
                         <td>CEO, CFO, CTO, Hub Manager</td>
                     </tr>
                     <tr>
                         <td><span class="label-bold">Technical Operations</span></td>
-                        <td class="currency">R235,000</td>
-                        <td class="currency">R2,820,000</td>
+                        <td class="currency" data-currency-zar="235000">R235,000</td>
+                        <td class="currency" data-currency-zar="2820000">R2,820,000</td>
                         <td>15%</td>
                         <td>NOC (24/7), network engineers, bandwidth</td>
                     </tr>
                     <tr>
                         <td><span class="label-bold">Customer Service</span></td>
-                        <td class="currency">R215,000</td>
-                        <td class="currency">R2,580,000</td>
+                        <td class="currency" data-currency-zar="215000">R215,000</td>
+                        <td class="currency" data-currency-zar="2580000">R2,580,000</td>
                         <td>13%</td>
                         <td>CS agents, CRM, billing (scales with growth)</td>
                     </tr>
                     <tr>
                         <td><span class="label-bold">Field Operations (Contractor)</span></td>
-                        <td class="currency">R240,000</td>
-                        <td class="currency">R2,880,000</td>
+                        <td class="currency" data-currency-zar="240000">R240,000</td>
+                        <td class="currency" data-currency-zar="2880000">R2,880,000</td>
                         <td>15%</td>
                         <td>Installation & maintenance contractors</td>
                     </tr>
                     <tr>
                         <td><span class="label-bold">Marketing & Sales</span></td>
-                        <td class="currency">R120,000</td>
-                        <td class="currency">R1,440,000</td>
+                        <td class="currency" data-currency-zar="120000">R120,000</td>
+                        <td class="currency" data-currency-zar="1440000">R1,440,000</td>
                         <td>8%</td>
                         <td>Sales team, digital marketing, community</td>
                     </tr>
                     <tr>
                         <td><span class="label-bold">Finance & Administration</span></td>
-                        <td class="currency">R160,000</td>
-                        <td class="currency">R1,920,000</td>
+                        <td class="currency" data-currency-zar="160000">R160,000</td>
+                        <td class="currency" data-currency-zar="1920000">R1,920,000</td>
                         <td>10%</td>
                         <td>Accounting, HR, facilities, vehicles</td>
                     </tr>
                     <tr>
                         <td><span class="label-bold">General Overhead & Contingency</span></td>
-                        <td class="currency">R100,000</td>
-                        <td class="currency">R1,200,000</td>
+                        <td class="currency" data-currency-zar="100000">R100,000</td>
+                        <td class="currency" data-currency-zar="1200000">R1,200,000</td>
                         <td>6%</td>
                         <td>Software, legal, licenses, contingency</td>
                     </tr>
                     <tr style="background: var(--light-gray); font-weight: 700;">
                         <td><span class="label-bold">TOTAL MONTHLY OPEX</span></td>
-                        <td class="currency">R1,600,000</td>
-                        <td class="currency">R16,560,000</td>
+                        <td class="currency" data-currency-zar="1600000">R1,600,000</td>
+                        <td class="currency" data-currency-zar="16560000">R16,560,000</td>
                         <td>100%</td>
                         <td style="color: var(--accent-burgundy);">For 4 projects / 40K homes</td>
                     </tr>
@@ -697,32 +742,32 @@
                     <tr>
                         <td><span class="label-bold">50%</span></td>
                         <td class="metric-neutral">5,000</td>
-                        <td class="currency">R1,500,000</td>
-                        <td class="currency">R1,100,000</td>
+                        <td class="currency" data-currency-zar="1500000">R1,500,000</td>
+                        <td class="currency" data-currency-zar="1100000">R1,100,000</td>
                         <td class="metric-positive">32.6%</td>
                         <td>2.8 years</td>
                     </tr>
                     <tr style="background: var(--light-gray);">
                         <td><span class="label-bold">60%</span></td>
                         <td class="metric-neutral">6,000</td>
-                        <td class="currency">R1,800,000</td>
-                        <td class="currency">R1,400,000</td>
+                        <td class="currency" data-currency-zar="1800000">R1,800,000</td>
+                        <td class="currency" data-currency-zar="1400000">R1,400,000</td>
                         <td class="metric-positive">41.5%</td>
                         <td>2.1 years</td>
                     </tr>
                     <tr>
                         <td><span class="label-bold">70%</span></td>
                         <td class="metric-neutral">7,000</td>
-                        <td class="currency">R2,100,000</td>
-                        <td class="currency">R1,700,000</td>
+                        <td class="currency" data-currency-zar="2100000">R2,100,000</td>
+                        <td class="currency" data-currency-zar="1700000">R1,700,000</td>
                         <td class="metric-positive">50.4%</td>
                         <td>1.8 years</td>
                     </tr>
                     <tr style="background: #fff3cd;">
                         <td><span class="label-bold">80% (TARGET)</span></td>
                         <td class="metric-neutral">8,000</td>
-                        <td class="currency">R2,400,000</td>
-                        <td class="currency">R2,000,000</td>
+                        <td class="currency" data-currency-zar="2400000">R2,400,000</td>
+                        <td class="currency" data-currency-zar="2000000">R2,000,000</td>
                         <td class="metric-positive">59.3%</td>
                         <td><strong>1.5 years</strong></td>
                     </tr>
@@ -813,5 +858,7 @@
             </div>
         </div>
     </div>
+
+    <script src="currency-converter.js"></script>
 </body>
 </html>

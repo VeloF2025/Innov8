@@ -280,6 +280,44 @@
             font-style: italic;
         }
 
+        /* Currency Toggle */
+        .currency-toggle {
+            display: inline-flex;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            padding: 4px;
+            margin-top: 15px;
+        }
+
+        .currency-toggle-btn {
+            padding: 8px 16px;
+            border: none;
+            background: transparent;
+            color: white;
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .currency-toggle-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .currency-toggle-btn.active {
+            background: var(--accent-burgundy);
+            color: white;
+            box-shadow: 0 4px 12px rgba(139, 58, 58, 0.3);
+        }
+
+        .exchange-rate-info {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 8px;
+            font-style: italic;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .logo-mark {
@@ -319,6 +357,13 @@
         </div>
         <div class="company-tagline">Connecting Communities at the Speed of Light</div>
         <div class="document-type">FINANCIAL ASSUMPTIONS & CALCULATION LOGIC - 2025</div>
+        <div class="currency-toggle">
+            <button class="currency-toggle-btn active" data-currency="ZAR">R - Rand</button>
+            <button class="currency-toggle-btn" data-currency="USD">$ - USD</button>
+        </div>
+        <div class="exchange-rate-info">
+            Current rate: <span id="exchange-rate-display">Loading...</span>
+        </div>
     </div>
 
     <!-- Main Content -->
@@ -451,7 +496,7 @@
             </div>
 
             <div class="subsection-title">Investment Structure: Infrastructure vs. Working Capital</div>
-            <p style="margin-bottom: 15px;">The R48.3M per-project investment is split between upfront infrastructure CAPEX and working capital to bridge cash flow during ramp:</p>
+            <p style="margin-bottom: 15px;">The <span data-currency-zar="48300000">R48.3M</span> per-project investment is split between upfront infrastructure CAPEX and working capital to bridge cash flow during ramp:</p>
 
             <table>
                 <thead>
@@ -467,32 +512,32 @@
                     <tr>
                         <td><strong>Infrastructure CAPEX</strong></td>
                         <td><strong>Node Setup (GPON headend, fiber roll-out, splitters, cabinets)</strong></td>
-                        <td><strong>R10.0M</strong></td>
+                        <td><strong data-currency-zar="10000000">R10.0M</strong></td>
                         <td>Month 1 (upfront)</td>
                         <td>One-time infrastructure. Capitalized, 20+ year asset life.</td>
                     </tr>
                     <tr>
                         <td></td>
                         <td><strong>Backhaul (connection to regional backbone)</strong></td>
-                        <td><strong>R0.3M</strong></td>
+                        <td><strong data-currency-zar="300000">R0.3M</strong></td>
                         <td>Month 1 (upfront)</td>
                         <td>One-time infrastructure. Capitalized, 20+ year asset life. Monthly backhaul costs included in OPEX.</td>
                     </tr>
                     <tr>
                         <td colspan="2"><strong>Total Infrastructure CAPEX</strong></td>
-                        <td><strong>R10.3M</strong></td>
+                        <td><strong data-currency-zar="10300000">R10.3M</strong></td>
                         <td colspan="2"><strong>Tangible fiber assets deployed upfront</strong></td>
                     </tr>
                     <tr>
                         <td><strong>Working Capital</strong></td>
                         <td><strong>Cash Reserve for Ramp-Up Shortfall</strong></td>
-                        <td><strong>R38.0M</strong></td>
+                        <td><strong data-currency-zar="38000000">R38.0M</strong></td>
                         <td>Months 1-10 (gradually consumed)</td>
                         <td>Covers: (1) contractor payments R21.6M, (2) ONT/router hardware R6.0M, (3) monthly OPEX shortfall until Month 5, (4) R5M safety buffer. Recovers post-Month 10 as project becomes cash-flow positive.</td>
                     </tr>
                     <tr>
                         <td colspan="2"><strong>Total Per-Project Investment</strong></td>
-                        <td><strong>R48.3M</strong></td>
+                        <td><strong data-currency-zar="48300000">R48.3M</strong></td>
                         <td colspan="2"><strong>R10.3M fixed assets + R38.0M working capital = Fully funded project</strong></td>
                     </tr>
                 </tbody>
@@ -1184,5 +1229,7 @@
             </div>
         </div>
     </div>
+
+    <script src="currency-converter.js"></script>
 </body>
 </html>

@@ -328,6 +328,44 @@
             font-style: italic;
         }
 
+        /* Currency Toggle */
+        .currency-toggle {
+            display: inline-flex;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            padding: 4px;
+            margin-top: 15px;
+        }
+
+        .currency-toggle-btn {
+            padding: 8px 16px;
+            border: none;
+            background: transparent;
+            color: white;
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .currency-toggle-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .currency-toggle-btn.active {
+            background: var(--accent-burgundy);
+            color: white;
+            box-shadow: 0 4px 12px rgba(139, 58, 58, 0.3);
+        }
+
+        .exchange-rate-info {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 8px;
+            font-style: italic;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .logo-mark {
@@ -406,6 +444,13 @@
         </div>
         <div class="company-tagline">Connecting Communities at the Speed of Light</div>
         <div class="document-type">CONFIDENTIAL INVESTMENT OPPORTUNITY - 2025</div>
+        <div class="currency-toggle">
+            <button class="currency-toggle-btn active" data-currency="ZAR">R - Rand</button>
+            <button class="currency-toggle-btn" data-currency="USD">$ - USD</button>
+        </div>
+        <div class="exchange-rate-info">
+            Current rate: <span id="exchange-rate-display">Loading...</span>
+        </div>
     </div>
 
     <!-- Main Content -->
@@ -495,12 +540,12 @@
                 <div class="metric-card">
                     <div class="metric-label">Year 1 Yield</div>
                     <div class="metric-value">34.5%</div>
-                    <div class="metric-context">4 projects ramping, R193.2M investment</div>
+                    <div class="metric-context">4 projects ramping, <span data-currency-zar="193200000">R193.2M</span> investment</div>
                 </div>
                 <div class="metric-card">
                     <div class="metric-label">Year 3 Yield</div>
                     <div class="metric-value">52.8%</div>
-                    <div class="metric-context">24 projects maturing, R1,159.2M total</div>
+                    <div class="metric-context">24 projects maturing, <span data-currency-zar="1159200000">R1,159.2M</span> total</div>
                 </div>
                 <div class="metric-card">
                     <div class="metric-label">Per-Project Payback</div>
@@ -515,7 +560,7 @@
             </div>
 
             <div class="highlight-box">
-                <strong>Key Highlights:</strong> Revenue ramp-up model with gradual ONT activation (250-300/week starting Month 3), tiered pricing acceleration (R3.50→R10 over 8 months), operational breakeven by Month 5, and per-project cumulative payback by Month 20. Each project requires R48.3M investment (R10.3M infrastructure + R38M working capital). 3-year portfolio grows from 4 to 24 projects.
+                <strong>Key Highlights:</strong> Revenue ramp-up model with gradual ONT activation (250-300/week starting Month 3), tiered pricing acceleration (R3.50→R10 over 8 months), operational breakeven by Month 5, and per-project cumulative payback by Month 20. Each project requires <span data-currency-zar="48300000">R48.3M</span> investment (R10.3M infrastructure + R38M working capital). 3-year portfolio grows from 4 to 24 projects.
                 <br><br>
                 <a href="VELOCITY_FINANCIAL_MODELS.html" style="display: inline-block; margin-top: 10px; color: var(--accent-burgundy); text-decoration: none; font-weight: 600;">→ View Detailed Financial Models Dashboard</a>
             </div>
@@ -561,25 +606,25 @@
                         <td><strong>Year 1</strong></td>
                         <td>4</td>
                         <td>40,000</td>
-                        <td>R193.2M</td>
+                        <td data-currency-zar="193200000">R193.2M</td>
                         <td><strong style="color: var(--accent-burgundy);">34.5%</strong></td>
-                        <td>R3.9M</td>
+                        <td data-currency-zar="3900000">R3.9M</td>
                     </tr>
                     <tr>
                         <td><strong>Year 2</strong></td>
                         <td>12</td>
                         <td>120,000</td>
-                        <td>R579.6M</td>
+                        <td data-currency-zar="579600000">R579.6M</td>
                         <td><strong style="color: var(--accent-burgundy);">35.2%</strong></td>
-                        <td>R11.9M</td>
+                        <td data-currency-zar="11900000">R11.9M</td>
                     </tr>
                     <tr>
                         <td><strong>Year 3</strong></td>
                         <td>24</td>
                         <td>240,000</td>
-                        <td>R1,159.2M</td>
+                        <td data-currency-zar="1159200000">R1,159.2M</td>
                         <td><strong style="color: var(--accent-burgundy);">52.8%</strong></td>
-                        <td>R34.1M</td>
+                        <td data-currency-zar="34100000">R34.1M</td>
                     </tr>
                     <tr>
                         <td><strong>Mature</strong></td>
@@ -587,7 +632,7 @@
                         <td>240,000</td>
                         <td>Maintenance</td>
                         <td><strong style="color: var(--accent-burgundy);">71.1%</strong></td>
-                        <td>R48.2M</td>
+                        <td data-currency-zar="48200000">R48.2M</td>
                     </tr>
                 </tbody>
             </table>
@@ -597,13 +642,13 @@
         <div class="section">
             <h2 class="section-title">💰 Revenue Ramp-Up & Project Economics</h2>
             <div class="highlight-box">
-                <strong>Realistic Deployment Model:</strong> 10,000 door projects reach 80% penetration (8,000 ONTs) through 10-month ramp, generating R2.4M monthly revenue at maturity
+                <strong>Realistic Deployment Model:</strong> 10,000 door projects reach 80% penetration (8,000 ONTs) through 10-month ramp, generating <span data-currency-zar="2400000">R2.4M</span> monthly revenue at maturity
             </div>
 
             <div style="background: var(--light-gray); padding: 20px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid var(--accent-burgundy);">
                 <strong>Project Timeline & Milestones:</strong>
                 <ul style="margin-left: 20px; margin-top: 10px;">
-                    <li><strong>Months 1-2:</strong> Fiber deployment and infrastructure setup (R400K/month OPEX, zero revenue)</li>
+                    <li><strong>Months 1-2:</strong> Fiber deployment and infrastructure setup (<span data-currency-zar="400000">R400K</span>/month OPEX, zero revenue)</li>
                     <li><strong>Month 3+:</strong> Begin ONT activations at ~250-300 per week (~1,100/month)</li>
                     <li><strong>Month 5:</strong> Operational breakeven achieved (monthly revenue exceeds OPEX)</li>
                     <li><strong>Month 7-8:</strong> Cumulative cash flow positive (full payback achieved)</li>
@@ -667,15 +712,15 @@
                         </tr>
                         <tr>
                             <td>Monthly Revenue (R10/day)</td>
-                            <td><strong>R2.4M</strong></td>
+                            <td><strong data-currency-zar="2400000">R2.4M</strong></td>
                         </tr>
                         <tr>
                             <td>Monthly OPEX (Hub Allocation)</td>
-                            <td><strong>R400K</strong></td>
+                            <td><strong data-currency-zar="400000">R400K</strong></td>
                         </tr>
                         <tr>
                             <td>Monthly Cash Flow</td>
-                            <td><strong style="color: var(--accent-burgundy); font-size: 18px;">R2.0M</strong></td>
+                            <td><strong style="color: var(--accent-burgundy); font-size: 18px;" data-currency-zar="2000000">R2.0M</strong></td>
                         </tr>
                         <tr>
                             <td><strong>Mature Annual Yield</strong></td>
@@ -829,5 +874,7 @@
             </div>
         </div>
     </div>
+
+    <script src="currency-converter.js"></script>
 </body>
 </html>

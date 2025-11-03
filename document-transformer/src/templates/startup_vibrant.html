@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="content-container">
+    {% if title %}
+    <div class="hero-section">
+        <h1 class="hero-title">{{ title }}</h1>
+        {% if brand.tagline %}
+        <p class="hero-subtitle">{{ brand.tagline }}</p>
+        {% endif %}
+        {% if metadata.status %}
+        <div class="status-indicator">
+            <span class="pulse-dot"></span>
+            <span>{{ metadata.status|title }}</span>
+        </div>
+        {% endif %}
+    </div>
+    {% endif %}
+
+    {% if has_sections %}
+    <nav class="floating-nav">
+        <h4>Quick Navigation</h4>
+        <div class="nav-items">
+            {% for section in sections %}
+            <a href="#{{ section.title|slugify }}" class="nav-item">{{ section.title }}</a>
+            {% endfor %}
+        </div>
+    </nav>
+    {% endif %}
+
+    <main class="document-content">
+        {% for section in sections %}
+        <section id="{{ section.title|slugify }}" class="content-section">
+            <div class="section-header">
+                <h{{ section.level }} class="section-title">{{ section.title }}</h{{ section.level }}>
+                <div class="section-accent"></div>
+            </div>
+            <div class="section-content">
+                {{ section.content|nl2br|safe }}
+            </div>
+
+            {% if loop.first and has_team_members %}
+            <div class="team-showcase">
+                <h3>Meet Our Team</h3>
+                <div class="team-grid">
+                    {% for member in team_members %}
+                    <div class="team-card">
+                        <div class="member-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <h4>{{ member.name }}</h4>
+                        <p class="member-title">{{ member.title }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+        </section>
+        {% endfor %}
+    </main>
+</div>
+{% endblock %}

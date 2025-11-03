@@ -1,9 +1,25 @@
 # 🌱 Seed Stage Business Planning Template
 
-**Template Version**: 1.0
-**Business Stage**: Seed Stage
-**Last Updated**: November 2025
-
+---
+template_metadata:
+  template_id: "seed-stage-v1"
+  template_name: "Seed Stage Business Planning Template"
+  template_version: "2.0"
+  category: "business-stage"
+  subcategory: "early-stage"
+  industry: "all-industries"
+  target_stage: "seed"
+  target_geography: "global"
+  last_updated: "2025-11-02"
+  author: "Innov8 Template Team"
+  reviewed_by: "Seed Stage Investment Committee"
+  validated: true
+  template_length: "60 min read"
+  difficulty_level: "intermediate"
+  prerequisites: ["pre-seed completion", "mvp developed", "initial traction"]
+  estimated_completion_time: "12-20 hours"
+  integration_with: ["pre-seed-idea-template", "financial-projections-template", "investment-memo-template", "term-sheet-seed-template"]
+  tags: ["seed-stage", "startup funding", "mvp", "traction", "product-market-fit"]
 ---
 
 ## 📋 Executive Summary

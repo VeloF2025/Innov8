@@ -3,10 +3,14 @@
 ## Executive Team
 
 ### Chief Executive Officer (CEO)
-**Name**: [To be appointed]
+**Name**: Llewelyn Hofmeyr
 **Role**: Strategic vision, investor relations, business development
-**Background**: [Experience in telecom/technology leadership]
+**Background**: Ex-COO major FNO, MTN Metro & FibreCo project leader
 **Expertise**: Strategic planning, market expansion, stakeholder management
+**Education**: University of Cape Town (2017-2018)
+**LinkedIn**: linkedin.com/in/llewelyn-hofmeyr (4K+ followers)
+**Location**: Cape Town, South Africa
+**Status**: Appointed and Active
 
 ### Chief Technology Officer (CTO)
 **Name**: [To be appointed]

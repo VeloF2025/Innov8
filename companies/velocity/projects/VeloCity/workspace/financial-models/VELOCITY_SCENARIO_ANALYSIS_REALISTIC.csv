@@ -1,0 +1,129 @@
+VeloCity Financial Model - Scenario Analysis with Realistic OPEX
+Hub & Spoke + Contractor Field Operations Model
+Prepared: November 2025
+
+SINGLE PROJECT ANALYSIS (10,000 Door Deployment)
+Year 1 OPEX Allocation: R400,000/month (Hub-Based)
+
+SCENARIO,PENETRATION %,ONTs,DAILY RATE,MONTHLY REVENUE,MONTHLY OPEX,MONTHLY CASH FLOW,ANNUAL CASH FLOW,ANNUAL YIELD %,ROI PERIOD (YEARS),VIABILITY,NOTES
+Scenario 1,60%,6000,R2.50,R450000,R400000,R50000,R600000,1.8%,56.3,Not Viable,Low rate + low penetration
+Scenario 2,60%,6000,R5.00,R900000,R400000,R500000,R6000000,17.8%,5.6,Marginal,Medium rate + low penetration
+Scenario 3,60%,6000,R7.50,R1350000,R400000,R950000,R11400000,33.8%,2.9,Viable,High rate + low penetration
+Scenario 4,60%,6000,R10.00,R1800000,R400000,R1400000,R16800000,49.8%,2.0,Strong,Premium rate + low penetration
+Scenario 5,70%,7000,R2.50,R525000,R400000,-R125000,-R1500000,-4.4%,Not Viable,Not Viable,Low rate + base penetration
+Scenario 6,70%,7000,R5.00,R1050000,R400000,R650000,R7800000,23.1%,4.3,Viable,Medium rate + base penetration
+Scenario 7,70%,7000,R7.50,R1575000,R400000,R1175000,R14100000,41.8%,2.4,Strong,High rate + base penetration
+Scenario 8 (BASE),70%,7000,R10.00,R2100000,R400000,R1700000,R20400000,60.4%,1.7,EXCELLENT,Premium rate + base penetration ✓
+Scenario 9,80%,8000,R2.50,R600000,R400000,R200000,R2400000,7.1%,14.1,Not Viable,Low rate + high penetration
+Scenario 10,80%,8000,R5.00,R1200000,R400000,R800000,R9600000,28.4%,3.5,Viable,Medium rate + high penetration
+Scenario 11,80%,8000,R7.50,R1800000,R400000,R1400000,R16800000,49.8%,2.0,Strong,High rate + high penetration
+Scenario 12 (OPT),80%,8000,R10.00,R2400000,R400000,R2000000,R24000000,71.1%,1.4,EXCELLENT,Premium rate + high penetration ✓
+
+SINGLE PROJECT YIELD COMPARISON: Original Model vs Realistic Model
+
+SCENARIO,ORIGINAL OPEX,ORIGINAL YIELD,REALISTIC OPEX,REALISTIC YIELD,YIELD IMPROVEMENT
+Base Case (7K @ R10),R1977000,4.4%,R400000,60.4%,+56.0 percentage points
+Optimistic (8K @ R10),R1977000,15.0%,R400000,71.1%,+56.1 percentage points
+
+PORTFOLIO ANALYSIS: Multi-Project Scaling with Hub & Spoke Efficiency
+
+YEAR,PROJECTS,HOMES,OPEX MODEL,TOTAL MONTHLY OPEX,PER PROJECT OPEX,TOTAL MONTHLY REVENUE,TOTAL MONTHLY CASH FLOW,ANNUAL YIELD %,CUMULATIVE INVESTMENT
+Year 1,4,40000,Hub 1,R1600000,R400000,R8400000,R6800000,60.4%,R135000000
+Year 2,12,120000,Hubs 1-3,R3050000,R254167,R25200000,R22150000,65.3%,R405000000
+Year 3,24,240000,Hubs 1-5,R5360000,R223333,R50400000,R45040000,66.7%,R810000000
+Years 4-20,24,240000,Mature,R5360000,R223333,R57600000,R52240000,77.1%,R810000000
+
+PORTFOLIO YIELDS: Comparison of Old vs New Model
+
+YEAR,ORIGINAL YIELD,REALISTIC YIELD,IMPROVEMENT
+Year 1,18.9%,60.4%,+41.5 percentage points
+Year 2,22.0%,65.3%,+43.3 percentage points
+Year 3,28.9%,66.7%,+37.8 percentage points
+
+OPEX EFFICIENCY ANALYSIS: How Costs Scale Across Projects
+
+STAGE,PROJECTS,STAFF COUNT,TOTAL OPEX,OPEX PER PROJECT,OPEX PER HOME,SAVINGS VS Y1
+Year 1,4,15-25,R1.6M,R400K,R40,Baseline
+Year 2,12,45-50,R3.05M,R254K,R25,-36%
+Year 3,24,65-70,R5.36M,R223K,R22,-44%
+
+STAFFING & OPERATIONAL SCALE
+
+YEAR,CORE EXECUTIVES,TECHNICAL,CUSTOMER SERVICE,FIELD OPS,ADMIN,TOTAL STAFF,STAFF PER 10K HOMES
+Year 1,4,3,7,Contractors,5,19-25,4.8-6.3
+Year 2,5,5,20,Contractors,5,35-45,2.9-3.8
+Year 3,5,8,35,Contractors,7,55-65,2.3-2.7
+
+SENSITIVITY ANALYSIS: OPEX Impact at Different Penetration Rates (Year 1)
+
+PENETRATION,ONTs,OPEX REQUIRED,R2.50/DAY,R5.00/DAY,R7.50/DAY,R10.00/DAY
+60%,6000,R400000,0.6%,13.5%,31.3%,47.6%
+70%,7000,R400000,-4.4%,20.7%,41.8%,60.4%
+80%,8000,R400000,2.5%,27.2%,49.8%,71.1%
+
+CONTRACTOR FIELD OPERATIONS MODEL
+
+PHASE,CONDITION,COST STRUCTURE,EXAMPLE (6K ONTS),NOTES
+Pre-80% Activation,0-79% ONT activation,Fixed R60K/month per project,R60K/month,Contractor absorbs cost risk
+Post-80% Activation,80%+ ONT activation,Performance-based R10/ONT/month,R60K/month (6K × R10),Aligns incentives with VeloCity
+Transition,Zone-by-zone upgrade,Hybrid (fixed + performance),Mixed per zone,Smooth transition over 3-6 months
+
+BREAK-EVEN ANALYSIS: Realistic Model
+
+PROJECT TYPE,MONTHLY OPEX,BREAKEVEN REVENUE,BREAKEVEN ONTs @ R10/DAY,REQUIRED PENETRATION,VIABLE
+10K Door,R400000,R400000,1333,13.3%,Yes - All scenarios viable above 25%
+20K Door,R400000-600000,R400000-600000,1333-2000,6.7-10%,Yes - Viable at lower penetration
+Single ONT,R400000 base,R400000 base,1333,13.3%,Yes - Minimum 1333 ONTs needed
+
+COMPARISON: 10K vs 20K Door Projects (Year 1 Pricing)
+
+PROJECT SIZE,DOORS,PENETRATION,ONTs,REVENUE @ R10/DAY,OPEX ALLOCATION,MONTHLY CASH FLOW,ANNUAL YIELD
+10K,10000,60%,6000,R1800000,R400000,R1400000,49.8%
+10K,10000,70%,7000,R2100000,R400000,R1700000,60.4%
+10K,10000,80%,8000,R2400000,R400000,R2000000,71.1%
+20K,20000,60%,12000,R3600000,R600000,R3000000,53.7%
+20K,20000,70%,14000,R4200000,R600000,R3600000,64.4%
+20K,20000,80%,16000,R4800000,R600000,R4200000,75.0%
+
+DECISION FRAMEWORK: Which Scenario to Target?
+
+SCENARIO,PENETRATION,DAILY RATE,ANNUAL YIELD,RISK LEVEL,RECOMMENDATION
+Conservative,60%,R7.50,33.8%,Low,Safe starting point for new markets
+Base Case,70%,R10.00,60.4%,Medium,Optimal risk/reward balance ✓
+Optimistic,80%,R10.00,71.1%,Medium,Strong growth potential
+Aggressive,80%,R10.00+,75%+,Medium-High,Market dominance in region
+
+KEY ASSUMPTIONS UNDERLYING MODEL
+
+Assumption,Value,Validation
+Monthly OPEX (Year 1 per 10K project),R400000,Hub-based allocation across 4 projects
+Contractor field ops cost (pre-80%),R60000/month,Performance model after 80% activation
+Customer service scaling,1 agent per 1000 customers,Industry standard for telecom
+Hub effectiveness,1 manager per 4-5 projects,Standard infrastructure operations ratio
+Revenue model,R2.50-R10/ONT/day,Closed-access network with tiered service
+Penetration target baseline,70%,Conservative adoption curve for township markets
+CAPEX per home,R2025-R2695,Includes ONT, installation, backhaul allocation
+Asset life,20+ years,Fiber infrastructure standard
+
+CAPEX INVESTMENT SCHEDULE
+
+PROJECT SIZE,HOMES,DOORS DEPLOYED,CAPEX PER HOME,TOTAL CAPEX PER PROJECT,NOTES
+10K Door,10000,10000,R2025-R2695,R20.25M-R26.95M,Depends on ONT penetration rate
+20K Door,20000,20000,R2025-R2695,R40.5M-R53.9M,Scales proportionally with larger projects
+Average (10K base),10000,10000,R3375,R33.75M,Standard investment for business plan
+
+INVESTMENT SUMMARY
+
+METRIC,VALUE,CONTEXT
+Initial Year 1 Investment,R135M,4 projects × R33.75M each
+Total 3-Year Investment,R810M,24 projects across 3 years
+Payback Period (Single Project),1.7 years,Base case: 7K ONTs @ R10/day
+Year 1 Portfolio Yield,60.4%,Realistic Hub & Spoke model
+Year 3 Portfolio Yield,66.7%,With economies of scale
+Mature Yield (8K ONTs),77.1%,Long-term sustainable return
+Staff Growth,25 → 70 people,3-year build
+OPEX Leverage,-44%,Year 3 vs Year 1 per project
+
+DOCUMENT STATUS: ✓ REALISTIC MODEL - Ready for Investor Review
+VERSION: 2.0 (Lean Operations with Hub & Spoke Efficiency)
+LAST UPDATED: November 2025

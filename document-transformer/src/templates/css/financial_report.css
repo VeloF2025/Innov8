@@ -1,0 +1,218 @@
+/* Financial Report Styles */
+:root {
+    --primary-color: #388E3C;
+    --secondary-color: #455A64;
+    --accent-color: #4CAF50;
+    --background-color: #FFFFFF;
+    --text-color: #212121;
+    --light-gray: #F5F5F5;
+    --border-color: #E0E0E0;
+    --success-color: #4CAF50;
+    --warning-color: #FF9800;
+    --error-color: #F44336;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: var(--background-color);
+    color: var(--text-color);
+}
+
+.financial-header {
+    background: var(--light-gray);
+    border-bottom: 3px solid var(--primary-color);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.financial-header h1 {
+    color: var(--primary-color);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.financial-meta {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    font-size: 0.9rem;
+    color: var(--secondary-color);
+}
+
+.financial-nav {
+    background: white;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.financial-nav h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.financial-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.financial-nav li {
+    padding: 0.5rem 1rem;
+    background: var(--light-gray);
+    border-radius: 20px;
+}
+
+.financial-nav a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.financial-nav a:hover {
+    color: var(--primary-color);
+}
+
+.financial-content {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.financial-section {
+    margin-bottom: 3rem;
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.financial-section h2 {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
+
+.financial-content-text {
+    line-height: 1.7;
+    text-align: justify;
+}
+
+.financial-content-text p {
+    margin-bottom: 1rem;
+}
+
+.financial-report-table {
+    margin-bottom: 2rem;
+}
+
+.financial-report-table h3 {
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.table-container {
+    overflow-x: auto;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+.data-table th {
+    background: var(--primary-color);
+    color: white;
+    padding: 1rem;
+    text-align: left;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.data-table td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 0.9rem;
+}
+
+.data-table tr:hover {
+    background: var(--light-gray);
+}
+
+.data-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Status indicators */
+.status-draft {
+    background: #FFF3E0;
+    color: #F57C00;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+}
+
+.status-final {
+    background: #E8F5E8;
+    color: #2E7D32;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+}
+
+.status-review {
+    background: #E3F2FD;
+    color: #1976D2;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+}
+
+/* Print optimizations */
+@media print {
+    .financial-nav {
+        display: none;
+    }
+
+    .financial-section {
+        break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid var(--border-color);
+    }
+
+    .data-table {
+        page-break-inside: avoid;
+    }
+}
+
+@media (max-width: 768px) {
+    .financial-meta {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .financial-nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .financial-section {
+        padding: 1rem;
+    }
+
+    .data-table th,
+    .data-table td {
+        padding: 0.5rem;
+        font-size: 0.8rem;
+    }
+}

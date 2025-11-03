@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="content-container">
+    <div class="financial-header">
+        {% if title %}
+        <h1>{{ title }}</h1>
+        {% endif %}
+        <div class="financial-meta">
+            <span>{{ company }}</span>
+            <span>{{ current_date }}</span>
+            {% if metadata.status %}
+            <span class="status-{{ metadata.status }}">{{ metadata.status|title }}</span>
+            {% endif %}
+        </div>
+    </div>
+
+    {% if has_sections %}
+    <nav class="financial-nav">
+        <h3>Document Sections</h3>
+        <ul>
+            {% for section in sections %}
+            <li><a href="#{{ section.title|slugify }}">{{ section.title }}</a></li>
+            {% endfor %}
+        </ul>
+    </nav>
+    {% endif %}
+
+    <main class="financial-content">
+        {% for section in sections %}
+        <section id="{{ section.title|slugify }}" class="financial-section">
+            <h{{ section.level }}>{{ section.title }}</h{{ section.level }}>
+            <div class="financial-content-text">
+                {{ section.content|nl2br|safe }}
+            </div>
+        </section>
+        {% endfor %}
+
+        {% if has_financial_data %}
+        <section id="financial-tables" class="financial-section">
+            <h2>Financial Data</h2>
+            {% for financial in financial_data %}
+            <div class="financial-report-table">
+                <h3>{{ financial.title }}</h3>
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                {% for header in financial.headers %}
+                                <th>{{ header }}</th>
+                                {% endfor %}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for row in financial.table_data %}
+                            <tr>
+                                {% for cell in row %}
+                                <td>{{ cell }}</td>
+                                {% endfor %}
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            {% endfor %}
+        </section>
+        {% endif %}
+    </main>
+</div>
+{% endblock %}

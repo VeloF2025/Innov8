@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="content-container">
+    <div class="document-header-classic">
+        {% if title %}
+        <h1 class="document-title">{{ title }}</h1>
+        {% endif %}
+        <div class="document-meta">
+            <span class="meta-item">{{ company }}</span>
+            {% if industry %}
+            <span class="meta-item">{{ industry|title }}</span>
+            {% endif %}
+            <span class="meta-item">{{ current_date }}</span>
+        </div>
+    </div>
+
+    {% if has_sections %}
+    <div class="toc-classic">
+        <h2>Table of Contents</h2>
+        <ul class="toc-list">
+            {% for section in sections %}
+            <li class="toc-item">
+                <a href="#{{ section.title|slugify }}">{{ section.title }}</a>
+                <span class="toc-page">{{ loop.index }}</span>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+    <main class="document-content-classic">
+        {% for section in sections %}
+        <section id="{{ section.title|slugify }}" class="section-classic">
+            <h{{ section.level }} class="section-title-classic">{{ section.title }}</h{{ section.level }}>
+            <div class="section-content-classic">
+                {{ section.content|nl2br|safe }}
+            </div>
+        </section>
+        {% endfor %}
+
+        {% if has_team_members %}
+        <section class="team-classic">
+            <h2>Management Team</h2>
+            <div class="team-list-classic">
+                {% for member in team_members %}
+                <div class="team-member-classic">
+                    <h4>{{ member.name }}</h4>
+                    <p class="member-title-classic">{{ member.title }}</p>
+                    {% if member.experience %}
+                    <p class="member-experience">{{ member.experience }}</p>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+        {% endif %}
+    </main>
+</div>
+{% endblock %}

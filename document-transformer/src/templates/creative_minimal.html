@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="content-container">
+    {% if title %}
+    <div class="title-minimal">
+        <h1>{{ title }}</h1>
+        <div class="title-line"></div>
+    </div>
+    {% endif %}
+
+    <main class="content-minimal">
+        {% for section in sections %}
+        <section id="{{ section.title|slugify }}" class="section-minimal">
+            <h{{ section.level }} class="section-title-minimal">{{ section.title }}</h{{ section.level }}>
+            <div class="section-content-minimal">
+                {{ section.content|nl2br|safe }}
+            </div>
+        </section>
+        {% endfor %}
+
+        {% if has_team_members %}
+        <section class="team-minimal">
+            <h2 class="section-title-minimal">Team</h2>
+            <div class="team-minimal-grid">
+                {% for member in team_members %}
+                <div class="team-member-minimal">
+                    <h3>{{ member.name }}</h3>
+                    <p>{{ member.title }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+        {% endif %}
+    </main>
+</div>
+{% endblock %}

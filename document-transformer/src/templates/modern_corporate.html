@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="content-container">
+    {% if title %}
+    <div class="document-title">
+        <h1>{{ title }}</h1>
+        {% if metadata.status %}
+        <span class="status-badge status-{{ metadata.status }}">{{ metadata.status|title }}</span>
+        {% endif %}
+    </div>
+    {% endif %}
+
+    {% if has_sections %}
+    <nav class="table-of-contents">
+        <h3>Table of Contents</h3>
+        <ul>
+            {% for section in sections %}
+            <li><a href="#{{ section.title|slugify }}">{{ section.title }}</a></li>
+            {% if section.subsections %}
+                {% for subsection in section.subsections %}
+                <li><a href="#{{ subsection.title|slugify }}">{{ subsection.title }}</a></li>
+                {% endfor %}
+            {% endif %}
+            {% endfor %}
+        </ul>
+    </nav>
+    {% endif %}
+
+    <main class="document-content">
+        {% for section in sections %}
+        <section id="{{ section.title|slugify }}" class="content-section">
+            <h{{ section.level }} class="section-title">{{ section.title }}</h{{ section.level }}>
+            <div class="section-content">
+                {{ section.content|nl2br|safe }}
+            </div>
+
+            {% if loop.first and has_team_members %}
+            <div class="team-section">
+                <h3>Leadership Team</h3>
+                <div class="team-grid">
+                    {% for member in team_members %}
+                    <div class="team-member">
+                        <h4>{{ member.name }}</h4>
+                        <p class="member-title">{{ member.title }}</p>
+                        {% if member.bio %}
+                        <p class="member-bio">{{ member.bio }}</p>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+        </section>
+        {% endfor %}
+
+        {% if has_financial_data %}
+        <section id="financial-data" class="content-section">
+            <h2>Financial Information</h2>
+            {% for financial in financial_data %}
+            <div class="financial-table-container">
+                <h3>{{ financial.title }}</h3>
+                <table class="financial-table">
+                    <thead>
+                        <tr>
+                            {% for header in financial.headers %}
+                            <th>{{ header }}</th>
+                            {% endfor %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in financial.table_data %}
+                        <tr>
+                            {% for cell in row %}
+                            <td>{{ cell }}</td>
+                            {% endfor %}
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% endfor %}
+        </section>
+        {% endif %}
+    </main>
+</div>
+{% endblock %}

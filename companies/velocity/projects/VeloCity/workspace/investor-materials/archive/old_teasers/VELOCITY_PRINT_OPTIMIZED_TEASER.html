@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VeloCity Infrastructure Investment - Investor Teaser</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.4;
+            color: #000;
+            background: #fff;
+            font-size: 12px;
+        }
+
+        /* Page Setup for Print */
+        @page {
+            size: A4;
+            margin: 0.5in;
+        }
+
+        /* Container */
+        .teaser {
+            width: 100%;
+            max-width: 100%;
+        }
+
+        /* Header */
+        .header {
+            background: #0066cc;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .header .subtitle {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .header .tagline {
+            font-size: 12px;
+            font-style: italic;
+        }
+
+        /* Confidential Banner */
+        .confidential {
+            background: #ef4444;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            font-size: 12px;
+        }
+
+        /* Content Sections */
+        .content {
+            padding: 0 20px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+            page-break-inside: avoid;
+        }
+
+        .section h2 {
+            font-size: 18px;
+            font-weight: bold;
+            color: #0066cc;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #0066cc;
+            padding-bottom: 5px;
+        }
+
+        /* Highlights Grid */
+        .highlights {
+            display: table;
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 10px;
+            margin-bottom: 20px;
+        }
+
+        .highlight-row {
+            display: table-row;
+        }
+
+        .highlight-card {
+            display: table-cell;
+            width: 25%;
+            background: #f0f9ff;
+            border: 1px solid #0066cc;
+            padding: 15px;
+            text-align: center;
+            vertical-align: top;
+        }
+
+        .metric-value {
+            font-size: 20px;
+            font-weight: bold;
+            color: #0066cc;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .metric-label {
+            font-size: 11px;
+            line-height: 1.3;
+        }
+
+        /* Financial Tables */
+        .financial-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 11px;
+            page-break-inside: avoid;
+        }
+
+        .financial-table th {
+            background: #0066cc;
+            color: white;
+            padding: 8px 6px;
+            text-align: left;
+            font-weight: bold;
+            border: 1px solid #000;
+        }
+
+        .financial-table td {
+            padding: 6px;
+            border: 1px solid #000;
+            vertical-align: top;
+        }
+
+        .highlight-row {
+            background: #f0f9ff;
+        }
+
+        /* Timeline */
+        .timeline {
+            display: table;
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 10px;
+            margin: 20px 0;
+            page-break-inside: avoid;
+        }
+
+        .timeline-row {
+            display: table-row;
+        }
+
+        .timeline-item {
+            display: table-cell;
+            width: 25%;
+            background: #f0f9ff;
+            border: 1px solid #0066cc;
+            padding: 12px;
+            text-align: center;
+            vertical-align: top;
+        }
+
+        .timeline-year {
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #0066cc;
+        }
+
+        .timeline-value {
+            font-size: 10px;
+            line-height: 1.3;
+        }
+
+        /* Strategy Cards */
+        .strategy-grid {
+            display: table;
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 10px;
+            margin: 20px 0;
+            page-break-inside: avoid;
+        }
+
+        .strategy-row {
+            display: table-row;
+        }
+
+        .strategy-card {
+            display: table-cell;
+            width: 50%;
+            background: #f0f9ff;
+            border: 1px solid #0066cc;
+            padding: 15px;
+            vertical-align: top;
+        }
+
+        .strategy-card h3 {
+            font-size: 14px;
+            font-weight: bold;
+            color: #0066cc;
+            margin-bottom: 8px;
+        }
+
+        .strategy-card p {
+            font-size: 11px;
+            line-height: 1.3;
+            margin: 0;
+        }
+
+        /* Team Section */
+        .team-section {
+            background: #f0f9ff;
+            border: 1px solid #0066cc;
+            padding: 20px;
+            margin: 20px 0;
+            page-break-inside: avoid;
+        }
+
+        .team-grid {
+            display: table;
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 10px;
+            margin: 20px 0;
+        }
+
+        .team-row {
+            display: table-row;
+        }
+
+        .team-member {
+            display: table-cell;
+            width: 50%;
+            background: white;
+            border: 1px solid #0066cc;
+            padding: 15px;
+            text-align: center;
+            vertical-align: top;
+        }
+
+        .team-member h4 {
+            font-size: 14px;
+            font-weight: bold;
+            color: #0066cc;
+            margin-bottom: 3px;
+        }
+
+        .team-member .title {
+            font-size: 12px;
+            font-style: italic;
+            margin-bottom: 5px;
+            color: #666;
+        }
+
+        .team-member p {
+            font-size: 10px;
+            line-height: 1.3;
+            margin: 5px 0;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: #0066cc;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin: 20px 0;
+            page-break-inside: avoid;
+        }
+
+        .cta-section h2 {
+            color: white;
+            border-bottom: 2px solid white;
+            margin-bottom: 15px;
+        }
+
+        .cta-section p {
+            margin-bottom: 10px;
+        }
+
+        .contact-info {
+            font-size: 10px;
+            margin-top: 15px;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a1a2e;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 10px;
+            margin-top: 20px;
+            page-break-inside: avoid;
+        }
+
+        .footer .legal {
+            font-size: 9px;
+            opacity: 0.8;
+            margin-top: 8px;
+        }
+
+        /* Print-specific styles */
+        @media print {
+            body {
+                font-size: 10pt;
+                line-height: 1.3;
+            }
+
+            .header {
+                page-break-after: always;
+            }
+
+            .section,
+            .highlight-card,
+            .timeline-item,
+            .strategy-card,
+            .team-member,
+            .financial-table {
+                page-break-inside: avoid;
+            }
+
+            /* Ensure colors print correctly */
+            .header,
+            .confidential,
+            .cta-section,
+            .footer {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            /* Hide decorative elements */
+            .highlight-card::before,
+            .strategy-card::before {
+                display: none;
+            }
+        }
+
+        /* Simple screen styles */
+        @media screen {
+            body {
+                background: #f5f5f5;
+                padding: 20px;
+            }
+
+            .teaser {
+                background: white;
+                max-width: 800px;
+                margin: 0 auto;
+                box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            }
+
+            .content {
+                padding: 20px 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="teaser">
+        <!-- Header -->
+        <div class="header">
+            <h1>🏗️ VeloCity Infrastructure Investment</h1>
+            <div class="subtitle">Build-Operate-Maintain Fibre Network Opportunity</div>
+            <div class="tagline">Essential Digital Infrastructure in South Africa's Underserved Township Markets</div>
+        </div>
+
+        <!-- Confidential Banner -->
+        <div class="confidential">
+            CONFIDENTIAL INVESTMENT OPPORTUNITY - FOR QUALIFIED INVESTORS ONLY
+        </div>
+
+        <!-- Content -->
+        <div class="content">
+            <!-- Investment Highlights -->
+            <div class="section">
+                <h2>📊 Investment Highlights</h2>
+                <div class="highlights">
+                    <div class="highlight-row">
+                        <div class="highlight-card">
+                            <span class="metric-value">R810M</span>
+                            <div class="metric-label">Total Investment<br>Over 3 Years<br><small>Across 24 township projects</small></div>
+                        </div>
+                        <div class="highlight-card">
+                            <span class="metric-value">34.2%+</span>
+                            <div class="metric-label">Expected Annual Yield<br>Mature Operations<br><small>Years 4-20+</small></div>
+                        </div>
+                    </div>
+                    <div class="highlight-row">
+                        <div class="highlight-card">
+                            <span class="metric-value">240K</span>
+                            <div class="metric-label">Homes Connected<br>By Year 3<br><small>5.7% of target market</small></div>
+                        </div>
+                        <div class="highlight-card">
+                            <span class="metric-value">20+</span>
+                            <div class="metric-label">Asset Life Years<br>Infrastructure<br><small>With minimal degradation</small></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Multi-Project Rollout Strategy -->
+            <div class="section">
+                <h2>🎯 Multi-Project Rollout Strategy</h2>
+                <div class="timeline">
+                    <div class="timeline-row">
+                        <div class="timeline-item">
+                            <div class="timeline-year">Year 1</div>
+                            <div class="timeline-value">4 Projects<br>R135M Investment<br>16.9% Yield</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">Year 2</div>
+                            <div class="timeline-value">12 Projects<br>R405M Total<br>22.5% Yield</div>
+                        </div>
+                    </div>
+                    <div class="timeline-row">
+                        <div class="timeline-item">
+                            <div class="timeline-year">Year 3</div>
+                            <div class="timeline-value">24 Projects<br>R810M Total<br>24.8% Yield</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">Mature</div>
+                            <div class="timeline-value">24+ Projects<br>R810M Base<br>34.2%+ Yield</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Financial Projections Table -->
+                <table class="financial-table">
+                    <thead>
+                        <tr>
+                            <th>Year</th>
+                            <th>Projects</th>
+                            <th>Homes Passed</th>
+                            <th>Annual Yield</th>
+                            <th>Cumulative Investment</th>
+                            <th>Monthly Revenue</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Year 1</strong></td>
+                            <td>4</td>
+                            <td>40,000</td>
+                            <td><strong>16.9%</strong></td>
+                            <td>R135M</td>
+                            <td>R18M</td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td><strong>Year 2</strong></td>
+                            <td>12</td>
+                            <td>120,000</td>
+                            <td><strong>22.5%</strong></td>
+                            <td>R405M</td>
+                            <td>R54M</td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td><strong>Year 3</strong></td>
+                            <td>24</td>
+                            <td>240,000</td>
+                            <td><strong>24.8%</strong></td>
+                            <td>R810M</td>
+                            <td>R108M</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Years 4-20+</strong></td>
+                            <td>24+</td>
+                            <td>240,000+</td>
+                            <td><strong>34.2%+</strong></td>
+                            <td>R810M (maintenance)</td>
+                            <td>R144M+</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p style="text-align: center; margin-top: 15px; font-size: 11px; color: #666;">
+                    <strong>Key:</strong> 5.7% of target market (4.2M township homes) captured by Year 3 • 35% OPEX reduction through shared services
+                </p>
+            </div>
+
+            <!-- Build-Operate-Maintain Advantage -->
+            <div class="section">
+                <h2>🏗️ Build-Operate-Maintain Advantage</h2>
+                <div class="strategy-grid">
+                    <div class="strategy-row">
+                        <div class="strategy-card">
+                            <h3>⏱️ 20+ Year Assets</h3>
+                            <p>Long-term infrastructure with minimal degradation and technology upgrade pathways. Fibre networks maintain value for decades with proper maintenance.</p>
+                        </div>
+                        <div class="strategy-card">
+                            <h3>💰 Recurring Revenue</h3>
+                            <p>Monthly subscription model with 95%+ retention and inflation-linked pricing power. Essential service ensures stable cash flow.</p>
+                        </div>
+                    </div>
+                    <div class="strategy-row">
+                        <div class="strategy-card">
+                            <h3>🌐 Essential Service</h3>
+                            <p>Digital connectivity as basic utility with sustained demand regardless of economic cycles. Critical infrastructure for modern life.</p>
+                        </div>
+                        <div class="strategy-card">
+                            <h3>🚫 Monopoly Characteristics</h3>
+                            <p>High barriers to entry once deployed with regulatory and municipal protection. First-mover advantage in underserved markets.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Market Opportunity -->
+            <div class="section">
+                <h2>🎯 Verified Market Opportunity</h2>
+                <table class="financial-table">
+                    <thead>
+                        <tr>
+                            <th>Target Township</th>
+                            <th>Households</th>
+                            <th>Current Coverage</th>
+                            <th>Avg. Income</th>
+                            <th>Market Gap</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Soweto</strong></td>
+                            <td>350,000</td>
+                            <td>8%</td>
+                            <td>R12,000</td>
+                            <td>92% underserved</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Tembisa</strong></td>
+                            <td>280,000</td>
+                            <td>5%</td>
+                            <td>R10,000</td>
+                            <td>95% underserved</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Khayelitsha</strong></td>
+                            <td>320,000</td>
+                            <td>6%</td>
+                            <td>R8,500</td>
+                            <td>94% underserved</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Umlazi</strong></td>
+                            <td>250,000</td>
+                            <td>7%</td>
+                            <td>R11,000</td>
+                            <td>93% underserved</td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td><strong>Total Target</strong></td>
+                            <td><strong>4.2M</strong></td>
+                            <td><strong>&lt;10%</strong></td>
+                            <td><strong>R10,375</strong></td>
+                            <td><strong>90%+ underserved</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Executive Leadership -->
+            <div class="team-section">
+                <h2 style="text-align: center; color: #0066cc; border: none; padding: 0;">👥 Executive Leadership</h2>
+                <div class="team-grid">
+                    <div class="team-row">
+                        <div class="team-member">
+                            <h4>Llewelyn Hofmeyr</h4>
+                            <div class="title">CEO (Managing Director)</div>
+                            <p><strong>Background:</strong> Ex-COO major FNO<br>MTN Metro & FibreCo project leader<br>University of Cape Town</p>
+                            <p><strong>Email:</strong> lew@velocityfibre.co.za</p>
+                        </div>
+                        <div class="team-member">
+                            <h4>Lourens Kleynhans</h4>
+                            <div class="title">CFO</div>
+                            <p><strong>Background:</strong> Financial strategy<br>Investor relations specialist<br>Infrastructure fund expertise</p>
+                            <p><strong>Email:</strong> lourens@velocityfibre.co.za</p>
+                        </div>
+                    </div>
+                    <div class="team-row">
+                        <div class="team-member">
+                            <h4>Hein van Vuuren</h4>
+                            <div class="title">CCSO</div>
+                            <p><strong>Background:</strong> Chief Commercial & Strategy Officer<br>Strategic partnerships<br>Commercial development</p>
+                            <p><strong>Email:</strong> hein@velocityfibre.co.za</p>
+                        </div>
+                        <div class="team-member">
+                            <h4>Marco Devenier</h4>
+                            <div class="title">Business Development</div>
+                            <p><strong>Background:</strong> Market expansion<br>Growth initiatives<br>Partnership development</p>
+                            <p><strong>Email:</strong> marco@velocityfibre.co.za</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Investment Call to Action -->
+            <div class="cta-section">
+                <h2 style="color: white; border: none; padding: 0;">💰 Investment Opportunity</h2>
+                <p style="font-size: 12px;">
+                    Join VeloCity in building essential digital infrastructure while generating sustainable long-term yields in South Africa's underserved township markets
+                </p>
+                <div class="contact-info">
+                    <strong>For Investment Inquiries:</strong><br>
+                    <strong>CEO:</strong> lew@velocityfibre.co.za<br>
+                    <strong>CFO:</strong> lourens@velocityfibre.co.za<br>
+                    <strong>Investor Relations:</strong> investors@velocityfibre.co.za<br>
+                    <strong>Website:</strong> www.velocityfibre.co.za<br>
+                    <strong>Total Investment Required:</strong> R810M over 3 years
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>© 2025 VeloCity Fibre Networks (Pty) Ltd. All rights reserved.</p>
+            <p>Build-Operate-Maintain Strategy | Essential Digital Infrastructure | Sustainable Yields</p>
+            <p>📊 Status: Investment Ready | 🎯 Strategy: Infrastructure Yield Play | 🌍 Target: South African Township Markets</p>
+            <div class="legal">
+                This document is confidential and intended solely for qualified investors. The information contained herein is for discussion purposes only and does not constitute an offer to sell or a solicitation of an offer to buy any securities.
+            </div>
+        </div>
+    </div>
+</body>
+</html>

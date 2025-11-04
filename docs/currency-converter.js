@@ -62,25 +62,36 @@ class CurrencyConverter {
 
     setupToggleButtons() {
         const toggleButtons = document.querySelectorAll('.currency-toggle-btn');
+        console.log(`[Currency Converter] Found ${toggleButtons.length} toggle buttons`);
+
         toggleButtons.forEach(btn => {
             btn.addEventListener('click', (e) => {
+                e.preventDefault();
                 const currency = e.target.dataset.currency;
+                console.log(`[Currency Converter] Button clicked - Currency: ${currency}`);
                 this.setCurrency(currency);
             });
         });
     }
 
     setCurrency(currency) {
-        if (currency !== 'ZAR' && currency !== 'USD') return;
+        console.log(`[Currency Converter] setCurrency called with: ${currency}`);
+
+        if (currency !== 'ZAR' && currency !== 'USD') {
+            console.warn(`[Currency Converter] Invalid currency: ${currency}`);
+            return;
+        }
 
         this.currentCurrency = currency;
         localStorage.setItem('velocity-currency', currency);
+        console.log(`[Currency Converter] Current currency set to: ${this.currentCurrency}`);
 
         // Update button states
         document.querySelectorAll('.currency-toggle-btn').forEach(btn => {
             btn.classList.remove('active');
             if (btn.dataset.currency === currency) {
                 btn.classList.add('active');
+                console.log(`[Currency Converter] Added active class to ${currency} button`);
             }
         });
 
@@ -91,17 +102,25 @@ class CurrencyConverter {
     convertAllValues() {
         // Convert all elements with data-currency-zar attribute
         const currencyElements = document.querySelectorAll('[data-currency-zar]');
+        console.log(`[Currency Converter] Found ${currencyElements.length} currency elements to convert`);
+        console.log(`[Currency Converter] Current currency: ${this.currentCurrency}`);
+        console.log(`[Currency Converter] Exchange rate: ${this.rarToUsdRate}`);
 
         currencyElements.forEach(element => {
             const zarValue = parseFloat(element.dataset.currencyZar);
+            console.log(`[Currency Converter] Converting element - ZAR value: ${zarValue}`);
 
             if (this.currentCurrency === 'USD') {
                 const usdValue = zarValue * this.rarToUsdRate;
-                element.textContent = this.formatCurrency(usdValue, 'USD');
+                const formatted = this.formatCurrency(usdValue, 'USD');
+                element.textContent = formatted;
                 element.dataset.currencyDisplay = 'USD';
+                console.log(`[Currency Converter] Converted to USD: ${formatted}`);
             } else {
-                element.textContent = this.formatCurrency(zarValue, 'ZAR');
+                const formatted = this.formatCurrency(zarValue, 'ZAR');
+                element.textContent = formatted;
                 element.dataset.currencyDisplay = 'ZAR';
+                console.log(`[Currency Converter] Kept as ZAR: ${formatted}`);
             }
         });
 

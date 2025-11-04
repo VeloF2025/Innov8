@@ -140,6 +140,11 @@ class CurrencyConverter {
             const zarValue = parseFloat(element.dataset.currencyZar);
             console.log(`[Currency Converter] Converting element - ZAR value: ${zarValue}`);
 
+            // Store original text on first visit
+            if (!element.dataset.originalZarText) {
+                element.dataset.originalZarText = element.textContent;
+            }
+
             if (this.currentCurrency === 'USD') {
                 const usdValue = zarValue * this.rarToUsdRate;
                 const formatted = this.formatCurrency(usdValue, 'USD');
@@ -147,10 +152,10 @@ class CurrencyConverter {
                 element.dataset.currencyDisplay = 'USD';
                 console.log(`[Currency Converter] Converted to USD: ${formatted}`);
             } else {
-                const formatted = this.formatCurrency(zarValue, 'ZAR');
-                element.textContent = formatted;
+                // Restore original ZAR text instead of reformatting
+                element.textContent = element.dataset.originalZarText;
                 element.dataset.currencyDisplay = 'ZAR';
-                console.log(`[Currency Converter] Kept as ZAR: ${formatted}`);
+                console.log(`[Currency Converter] Restored ZAR: ${element.dataset.originalZarText}`);
             }
         });
 

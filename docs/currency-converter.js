@@ -10,9 +10,13 @@ class CurrencyConverter {
     }
 
     async init() {
+        console.log('[Currency Converter] Initializing CurrencyConverter...');
         await this.fetchExchangeRate();
+        console.log('[Currency Converter] Exchange rate fetched');
         this.applyCurrencyPreference();
+        console.log('[Currency Converter] Currency preference applied');
         this.setupToggleButtons();
+        console.log('[Currency Converter] Toggle buttons setup complete');
     }
 
     async fetchExchangeRate() {

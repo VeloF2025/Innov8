@@ -202,10 +202,15 @@ class CurrencyConverter {
 }
 
 // Initialize when DOM is ready
+console.log(`[Currency Converter] Script loaded - DOM readyState: ${document.readyState}`);
+
 if (document.readyState === 'loading') {
+    console.log('[Currency Converter] Waiting for DOMContentLoaded...');
     document.addEventListener('DOMContentLoaded', () => {
+        console.log('[Currency Converter] DOMContentLoaded event fired');
         window.currencyConverter = new CurrencyConverter();
     });
 } else {
+    console.log('[Currency Converter] DOM already loaded, initializing immediately');
     window.currencyConverter = new CurrencyConverter();
 }

@@ -139,15 +139,18 @@ test.describe('Currency Toggle Feature', () => {
       });
 
       test('should highlight active button with burgundy color', async ({ page }) => {
-        // Clear localStorage to reset currency preference to ZAR
+        await page.goto(doc.url);
+
+        // Clear localStorage to reset currency preference to ZAR (after navigation)
         await page.evaluate(() => {
           localStorage.removeItem('velocity-currency');
         });
 
-        await page.goto(doc.url);
+        // Reload the page to reinitialize with fresh currency state
+        await page.reload();
 
         // Wait for initialization
-        await page.waitForTimeout(1000);
+        await page.waitForTimeout(1500);
 
         const randButton = page.locator('button[data-currency="ZAR"]');
         const usdButton = page.locator('button[data-currency="USD"]');

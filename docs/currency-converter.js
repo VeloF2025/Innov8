@@ -63,14 +63,26 @@ class CurrencyConverter {
     setupToggleButtons() {
         const toggleButtons = document.querySelectorAll('.currency-toggle-btn');
         console.log(`[Currency Converter] Found ${toggleButtons.length} toggle buttons`);
+        console.log(`[Currency Converter] Setting up click listeners...`);
 
-        toggleButtons.forEach(btn => {
+        toggleButtons.forEach((btn, index) => {
+            console.log(`[Currency Converter] Attaching listener to button ${index} (${btn.dataset.currency})`);
             btn.addEventListener('click', (e) => {
                 e.preventDefault();
+                e.stopPropagation();
                 const currency = e.target.dataset.currency;
                 console.log(`[Currency Converter] Button clicked - Currency: ${currency}`);
                 this.setCurrency(currency);
             });
+        });
+
+        // Also set up delegation in case buttons are dynamically created
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('currency-toggle-btn')) {
+                const currency = e.target.dataset.currency;
+                console.log(`[Currency Converter] Delegation: Button clicked - Currency: ${currency}`);
+                this.setCurrency(currency);
+            }
         });
     }
 

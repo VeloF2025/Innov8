@@ -69,6 +69,11 @@ class CurrencyConverter {
         console.log(`[Currency Converter] Found ${toggleButtons.length} toggle buttons`);
         console.log(`[Currency Converter] Setting up click listeners...`);
 
+        // Log button details
+        toggleButtons.forEach((btn, i) => {
+            console.log(`[Currency Converter] Button ${i}: tag=${btn.tagName}, class=${btn.className}, data-currency=${btn.dataset.currency}`);
+        });
+
         // Store reference for use in closures
         const self = this;
 
@@ -76,6 +81,12 @@ class CurrencyConverter {
             console.log(`[Currency Converter] Attaching listener to button ${index} (${btn.dataset.currency})`);
 
             // Use simpler event handler without preventDefault
+            btn.onclick = function(e) {
+                const currency = this.dataset.currency;
+                console.log(`[Currency Converter] ONCLICK HANDLER FIRED - Currency: ${currency}`);
+                self.setCurrency(currency);
+            };
+
             btn.addEventListener('click', function(e) {
                 const currency = this.dataset.currency;
                 console.log(`[Currency Converter] BUTTON CLICK FIRED - Currency: ${currency}`);

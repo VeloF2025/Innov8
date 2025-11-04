@@ -334,6 +334,34 @@
             }
         }
 
+        /* Professional Icons */
+        .section-icon {
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            margin-right: 12px;
+            vertical-align: middle;
+            flex-shrink: 0;
+        }
+
+        .section-icon svg {
+            width: 100%;
+            height: 100%;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* Print optimization for icons */
+        @media print {
+            .section-icon svg {
+                stroke: #000;
+                stroke-width: 2.5;
+            }
+        }
+
         /* Currency Toggle */
         .currency-toggle {
             display: inline-flex;
@@ -404,7 +432,7 @@
     <div class="container">
         <!-- Revenue Ramp-Up Model -->
         <div class="section">
-            <h2 class="section-title">🚀 Revenue Ramp-Up Model</h2>
+            <h2 class="section-title"><span class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9-11a2 2 0 0 1 3.16 0l9 11A1 1 0 0 1 20 14H4z"></path></svg></span>Revenue Ramp-Up Model</h2>
             <p style="margin-bottom: 20px; color: var(--dark-text);">
                 VeloCity's financial model reflects realistic operational deployment with gradual ONT activation and tiered pricing as projects scale:
             </p>
@@ -433,7 +461,7 @@
 
         <!-- Year 1-3 Snapshot -->
         <div class="section">
-            <h2 class="section-title">📈 3-Year Financial Snapshot</h2>
+            <h2 class="section-title"><span class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"></path><path d="m19 9-5 5-4-4-3 3"></path></svg></span>3-Year Financial Snapshot</h2>
 
             <table>
                 <thead>
@@ -524,7 +552,7 @@
 
         <!-- Single Project Economics -->
         <div class="section">
-            <h2 class="section-title">💰 Single Project Economics - Monthly Ramp-Up</h2>
+            <h2 class="section-title"><span class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" x2="12" y1="2" y2="22"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg></span>Single Project Economics - Monthly Ramp-Up</h2>
             <p style="margin-bottom: 20px; color: var(--secondary-gray);">
                 <strong>Deployment Scenario:</strong> 10,000 door project • 80% mature penetration (8,000 ONTs) • Tiered pricing during ramp phase
             </p>
@@ -640,7 +668,7 @@
 
         <!-- Year 1 OPEX Breakdown -->
         <div class="section">
-            <h2 class="section-title">📊 Year 1 Operating Costs (R1.6M/month)</h2>
+            <h2 class="section-title"><span class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" x2="12" y1="20" y2="10"></line><line x1="18" x2="18" y1="20" y2="4"></line><line x1="6" x2="6" y1="20" y2="16"></line></svg></span>Year 1 Operating Costs (R1.6M/month)</h2>
             <p style="margin-bottom: 20px; color: var(--secondary-gray);">
                 <strong>Hub & Spoke Model:</strong> 15-25 core staff across 4 projects • R400K average per project
             </p>
@@ -722,7 +750,7 @@
 
         <!-- Penetration Scenarios -->
         <div class="section">
-            <h2 class="section-title">📊 Penetration Scenarios (Instant Maturity)</h2>
+            <h2 class="section-title"><span class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"></circle><path d="M8.56 2.75c4.37 6.03 6.29 9.42 8.69 17.72"></path><path d="M14.76 2.75c-4.37 6.03-6.29 9.42-8.69 17.72"></path><path d="M12 10v12"></path><path d="M9 20h6"></path></svg></span>Penetration Scenarios (Instant Maturity)</h2>
             <p style="margin-bottom: 20px; color: var(--secondary-gray);">
                 <strong>Note:</strong> These scenarios show theoretical yields at instant maturity (all ONTs activated immediately at mature R10/day pricing, ignoring ramp-up). The actual ramp model (shown above) is more conservative and realistic, with gradual activation over months 3-10 and tiered pricing (R3.50→R10). Payback at month 20 reflects the true cash flow timeline including setup, ramp, and post-ramp phases. All scenarios demonstrate profitability.
             </p>
@@ -781,7 +809,7 @@
 
         <!-- De-Risking Factors -->
         <div class="section">
-            <h2 class="section-title">🛡️ Financial De-Risking Factors</h2>
+            <h2 class="section-title"><span class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></span>Financial De-Risking Factors</h2>
 
             <table>
                 <thead>

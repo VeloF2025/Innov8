@@ -255,6 +255,61 @@
             font-size: 13px;
         }
 
+        /* Professional Icons */
+        .section-icon {
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            margin-right: 12px;
+            vertical-align: middle;
+            flex-shrink: 0;
+        }
+
+        .section-icon svg {
+            width: 100%;
+            height: 100%;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .content h2 {
+            display: flex;
+            align-items: center;
+        }
+
+        .info-section h3 {
+            display: flex;
+            align-items: center;
+        }
+
+        .document-card .icon {
+            width: 32px;
+            height: 32px;
+            margin-bottom: 15px;
+        }
+
+        .document-card .icon svg {
+            width: 100%;
+            height: 100%;
+            stroke: var(--primary-navy);
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* Print optimization for icons */
+        @media print {
+            .section-icon svg,
+            .document-card .icon svg {
+                stroke: #000;
+                stroke-width: 2.5;
+            }
+        }
+
         /* Currency Toggle */
         .currency-toggle {
             display: inline-flex;
@@ -340,7 +395,7 @@
 
         <!-- Welcome Section -->
         <div class="content">
-            <h2>📊 Welcome to the VeloCity Investor Portal</h2>
+            <h2><span class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" x2="12" y1="20" y2="10"></line><line x1="18" x2="18" y1="20" y2="4"></line><line x1="6" x2="6" y1="20" y2="16"></line></svg></span>Welcome to the VeloCity Investor Portal</h2>
             <p>
                 VeloCity Fibre Networks is building essential digital infrastructure in South Africa's underserved township markets, generating strong yields (34.5%-71.1% annually) through a proven Build-Operate-Maintain model with realistic revenue ramp-up.
             </p>
@@ -352,7 +407,7 @@
             <div class="documents-grid">
                 <!-- Branded HTML -->
                 <a href="VELOCITY_BRANDED_INVESTOR_TEASER.html" class="document-card">
-                    <div class="icon">🎨</div>
+                    <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"></circle><path d="M12 7v10"></path><path d="M8 11h8"></path><path d="M5 4h14v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4z"></path></svg></div>
                     <span class="badge">Interactive</span>
                     <h3>Branded HTML Presentation</h3>
                     <p>Professional interactive presentation with full branding, responsive design, and all company details.</p>
@@ -361,7 +416,7 @@
 
                 <!-- Print Version -->
                 <a href="VELOCITY_PRINT_OPTIMIZED_TEASER.html" class="document-card">
-                    <div class="icon">🖨️</div>
+                    <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg></div>
                     <span class="badge">Print Ready</span>
                     <h3>Print-Optimized Teaser</h3>
                     <p>A4 landscape format optimized for PDF generation. Use Ctrl+P to print to PDF.</p>
@@ -370,7 +425,7 @@
 
                 <!-- Financial Models Dashboard -->
                 <a href="VELOCITY_FINANCIAL_MODELS.html" class="document-card">
-                    <div class="icon">💰</div>
+                    <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" x2="12" y1="2" y2="22"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg></div>
                     <span class="badge">Interactive</span>
                     <h3>Financial Models Dashboard</h3>
                     <p>Excel-like financial projections with 3-year forecasts, OPEX breakdown, penetration scenarios, and single-project economics.</p>
@@ -379,7 +434,7 @@
 
                 <!-- Financial Assumptions -->
                 <a href="VELOCITY_FINANCIAL_ASSUMPTIONS.html" class="document-card">
-                    <div class="icon">📋</div>
+                    <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path><path d="M14 2v4a2 2 0 0 0 2 2h4"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg></div>
                     <span class="badge">Reference</span>
                     <h3>Financial Assumptions & Logic</h3>
                     <p>Explanation of all financial assumptions, calculation methodology, revenue model, and business logic behind the projections and metrics.</p>
@@ -389,7 +444,7 @@
 
             <!-- Investment Process -->
             <div class="info-section">
-                <h3>🎯 Quick Start Guide</h3>
+                <h3><span class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" x2="16" y1="12" y2="12"></line></svg></span>Quick Start Guide</h3>
                 <p>We suggest the following engagement flow:</p>
                 <ul>
                     <li><strong>Step 1 - Review Overview:</strong> Branded HTML Presentation for interactive introduction</li>
@@ -402,7 +457,7 @@
 
             <!-- Key Metrics Highlight -->
             <div class="info-section">
-                <h3>💰 Key Financial Metrics (Master Model - Realistic Ramp)</h3>
+                <h3><span class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg></span>Key Financial Metrics (Master Model - Realistic Ramp)</h3>
                 <p style="margin-bottom: 0;"><strong>Portfolio Yields (Blended):</strong> 34.5% Year 1 | 35.2% Year 2 | 52.8% Year 3 | 71.1% Mature (at 8K ONTs)</p>
                 <p style="margin-bottom: 0;"><strong>Per-Project Investment:</strong> <span data-currency-zar="48300000">R48.3M</span> (R10.3M capex + R38M working capital for ramp)</p>
                 <p style="margin-bottom: 0;"><strong>Cumulative Payback:</strong> ~20 months per project (includes 2-month setup + gradual revenue ramp)</p>
@@ -416,9 +471,9 @@
             <p><strong>VeloCity Fibre Networks (Pty) Ltd</strong></p>
             <p>Building Essential Digital Infrastructure in South Africa</p>
             <div class="contact-info">
-                <p>📧 <a href="mailto:investors@velocityfibre.co.za">investors@velocityfibre.co.za</a></p>
-                <p>🌐 <a href="https://www.velocityfibre.co.za" target="_blank">www.velocityfibre.co.za</a></p>
-                <p>⚠️ <em>This portal contains confidential information intended solely for qualified infrastructure investors.</em></p>
+                <p><span class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22 6 12 13 2 6"></polyline></svg></span><a href="mailto:investors@velocityfibre.co.za">investors@velocityfibre.co.za</a></p>
+                <p><span class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg></span><a href="https://www.velocityfibre.co.za" target="_blank">www.velocityfibre.co.za</a></p>
+                <p><span class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" x2="12" y1="8" y2="12"></line><line x1="12" x2="12.01" y1="16" y2="16"></line></svg></span><em>This portal contains confidential information intended solely for qualified infrastructure investors.</em></p>
             </div>
         </div>
     </div>

@@ -328,6 +328,34 @@
             font-style: italic;
         }
 
+        /* Professional Icons */
+        .section-icon {
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            margin-right: 12px;
+            vertical-align: middle;
+            flex-shrink: 0;
+        }
+
+        .section-icon svg {
+            width: 100%;
+            height: 100%;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* Print optimization for icons */
+        @media print {
+            .section-icon svg {
+                stroke: #000;
+                stroke-width: 2.5;
+            }
+        }
+
         /* Currency Toggle */
         .currency-toggle {
             display: inline-flex;
@@ -457,7 +485,7 @@
     <div class="container">
         <!-- About VeloCity -->
         <div class="section">
-            <h2 class="section-title">🏢 About VeloCity</h2>
+            <h2 class="section-title"><span class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="20" x="4" y="2" rx="2" ry="2"></rect><path d="M9 22v-4h6v4"></path><path d="M8 6h.01"></path><path d="M16 6h.01"></path><path d="M12 6h.01"></path><path d="M12 10h.01"></path><path d="M12 14h.01"></path><path d="M16 10h.01"></path><path d="M16 14h.01"></path><path d="M8 10h.01"></path><path d="M8 14h.01"></path></svg></span>About VeloCity</h2>
             <div style="background: var(--light-gray); padding: 25px; border-radius: 8px; border-left: 4px solid var(--accent-burgundy); margin-bottom: 25px;">
                 <h3 style="color: var(--primary-navy); font-size: 16px; margin-bottom: 12px; font-weight: 600;">Strategic Alliance of Industry Veterans</h3>
                 <p style="color: var(--dark-text); line-height: 1.7; margin-bottom: 15px;">
@@ -485,13 +513,13 @@
 
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-bottom: 25px;">
                 <div>
-                    <h3 style="color: var(--primary-navy); font-size: 14px; margin-bottom: 10px; font-weight: 600;">🎯 Our Mission</h3>
+                    <h3 style="color: var(--primary-navy); font-size: 14px; margin-bottom: 10px; font-weight: 600;"><span class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg></span>Our Mission</h3>
                     <p style="color: var(--dark-text); line-height: 1.6; font-size: 14px;">
                         Bridge the digital divide by bringing high-speed internet to underserved communities, transforming lives through connectivity and enabling economic growth and empowerment.
                     </p>
                 </div>
                 <div>
-                    <h3 style="color: var(--primary-navy); font-size: 14px; margin-bottom: 10px; font-weight: 600;">🌟 Our Vision</h3>
+                    <h3 style="color: var(--primary-navy); font-size: 14px; margin-bottom: 10px; font-weight: 600;"><span class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v2m-6.343.343l1.414 1.414m-2.828 2.828h2m10.687-10.687l1.414 1.414M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"></path></svg></span>Our Vision</h3>
                     <p style="color: var(--dark-text); line-height: 1.6; font-size: 14px;">
                         Become Africa's leading fiber network operator, recognized for innovation, reliability, and unwavering commitment to digital inclusion and community empowerment.
                     </p>
@@ -499,7 +527,7 @@
             </div>
 
             <div style="background: var(--light-gray); padding: 20px; border-radius: 8px;">
-                <h3 style="color: var(--primary-navy); font-size: 14px; margin-bottom: 15px; font-weight: 600;">✅ Competitive Advantages</h3>
+                <h3 style="color: var(--primary-navy); font-size: 14px; margin-bottom: 15px; font-weight: 600;"><span class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></span>Competitive Advantages</h3>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; font-size: 14px;">
                     <div style="display: flex; align-items: flex-start;">
                         <span style="color: var(--accent-burgundy); margin-right: 8px; font-weight: bold;">✓</span>
@@ -535,7 +563,7 @@
 
         <!-- Investment Snapshot -->
         <div class="section">
-            <h2 class="section-title">📊 Investment Snapshot</h2>
+            <h2 class="section-title"><span class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" x2="12" y1="20" y2="10"></line><line x1="18" x2="18" y1="20" y2="4"></line><line x1="6" x2="6" y1="20" y2="16"></line></svg></span>Investment Snapshot</h2>
             <div class="metrics-grid">
                 <div class="metric-card">
                     <div class="metric-label">Year 1 Yield</div>
@@ -568,7 +596,7 @@
 
         <!-- Market Opportunity -->
         <div class="section">
-            <h2 class="section-title">🎯 Market Opportunity</h2>
+            <h2 class="section-title"><span class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6"></path><path d="M3 13.5a9 9 0 0 1 15-6.7L21.5 8"></path><path d="M2.5 22v-6h6"></path><path d="M21 10.5a9 9 0 0 1-15 6.7L2.5 16"></path></svg></span>Market Opportunity</h2>
             <p>VeloCity targets South Africa's underserved township markets with exceptional growth potential:</p>
             <ul class="features-list">
                 <li><strong>4.2 million households</strong> addressable in target townships (verified data)</li>
@@ -580,7 +608,7 @@
 
         <!-- Business Model -->
         <div class="section">
-            <h2 class="section-title">🏗️ Build-Operate-Maintain Model</h2>
+            <h2 class="section-title"><span class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v6m6-4l-4 4m-12 0l4-4"></path><rect x="4" y="8" width="16" height="14" rx="2"></rect><line x1="8" x2="16" y1="12" y2="12"></line><line x1="8" x2="12" y1="16" y2="16"></line></svg></span>Build-Operate-Maintain Model</h2>
             <p><strong>Closed-Access FNO + ISP Model:</strong></p>
             <ul class="features-list">
                 <li>VeloCity is both Fiber Network Operator (FNO) and ISP</li>
@@ -640,7 +668,7 @@
 
         <!-- Single Project Economics -->
         <div class="section">
-            <h2 class="section-title">💰 Revenue Ramp-Up & Project Economics</h2>
+            <h2 class="section-title"><span class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline><polyline points="16 7 22 7 22 13"></polyline></svg></span>Revenue Ramp-Up & Project Economics</h2>
             <div class="highlight-box">
                 <strong>Realistic Deployment Model:</strong> 10,000 door projects reach 80% penetration (8,000 ONTs) through 10-month ramp, generating <span data-currency-zar="2400000">R2.4M</span> monthly revenue at maturity
             </div>
@@ -741,7 +769,7 @@
 
         <!-- De-Risking Factors -->
         <div class="section">
-            <h2 class="section-title">🛡️ De-Risking Factors</h2>
+            <h2 class="section-title"><span class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></span>De-Risking Factors</h2>
             <ul class="features-list">
                 <li><strong>Closed-access network</strong> - No wholesale partner dependency</li>
                 <li><strong>Essential service</strong> - Digital connectivity positioning</li>
@@ -754,7 +782,7 @@
 
         <!-- Executive Team -->
         <div class="section">
-            <h2 class="section-title">👥 Executive Leadership</h2>
+            <h2 class="section-title"><span class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></span>Executive Leadership</h2>
             <div class="team-grid">
                 <div class="team-member">
                     <div class="team-name">Llewelyn Hofmeyr</div>
@@ -793,7 +821,7 @@
 
         <!-- Investment Process -->
         <div class="section">
-            <h2 class="section-title">🚀 Investment Process</h2>
+            <h2 class="section-title"><span class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5-1.5-2-3.5-2-5.5a7 7 0 0 1 14 0c0 2-1 4-2.5 5.5M12 20v-8m-4-4L8 4m8 0l.5 4"/></svg></span>Investment Process</h2>
             <ol style="margin-left: 20px; line-height: 2;">
                 <li><strong>Initial Review</strong> - Review this teaser and executive summary</li>
                 <li><strong>Contact Executive Team</strong> - Discuss investment interest and timeline</li>
@@ -805,7 +833,7 @@
 
         <!-- Key Assumptions -->
         <div class="section">
-            <h2 class="section-title">📊 Key Assumptions (Realistic & Conservative)</h2>
+            <h2 class="section-title"><span class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="3" x2="3" y2="20"></line><line x1="21" y1="3" x2="21" y2="20"></line><line x1="6" y1="13" x2="6" y2="20"></line><line x1="12" y1="13" x2="12" y2="20"></line><line x1="18" y1="13" x2="18" y2="20"></line></svg></span>Key Assumptions (Realistic & Conservative)</h2>
             <table>
                 <thead>
                     <tr>

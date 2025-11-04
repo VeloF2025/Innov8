@@ -280,6 +280,34 @@
             font-style: italic;
         }
 
+        /* Professional Icons */
+        .section-icon {
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            margin-right: 12px;
+            vertical-align: middle;
+            flex-shrink: 0;
+        }
+
+        .section-icon svg {
+            width: 100%;
+            height: 100%;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* Print optimization for icons */
+        @media print {
+            .section-icon svg {
+                stroke: #000;
+                stroke-width: 2.5;
+            }
+        }
+
         /* Currency Toggle */
         .currency-toggle {
             display: inline-flex;
@@ -370,7 +398,7 @@
     <div class="container">
         <!-- Overview -->
         <div class="section">
-            <h2 class="section-title">📋 Overview</h2>
+            <h2 class="section-title"><span class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path><path d="M14 2v4a2 2 0 0 0 2 2h4"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg></span>Overview</h2>
             <p style="font-size: 16px; margin: 20px 0; line-height: 1.8;">
                 This document explains the financial assumptions, calculation methodology, and business logic underlying all VeloCity investor materials and financial models. It is intended to help investors understand how we arrived at our projections and the reasoning behind each assumption.
             </p>
@@ -381,7 +409,7 @@
 
         <!-- Revenue Model -->
         <div class="section">
-            <h2 class="section-title">💰 Revenue Model & Pricing</h2>
+            <h2 class="section-title"><span class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" x2="12" y1="2" y2="22"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg></span>Revenue Model & Pricing</h2>
 
             <div class="subsection-title">Base Revenue Assumption</div>
             <div class="assumption-box">
@@ -443,7 +471,7 @@
 
         <!-- Operational Assumptions -->
         <div class="section">
-            <h2 class="section-title">🏗️ Operational Assumptions</h2>
+            <h2 class="section-title"><span class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="20" x="4" y="2" rx="2" ry="2"></rect><path d="M9 22v-4h6v4"></path><path d="M8 6h.01"></path><path d="M16 6h.01"></path><path d="M12 6h.01"></path><path d="M12 10h.01"></path><path d="M12 14h.01"></path><path d="M16 10h.01"></path><path d="M16 14h.01"></path><path d="M8 10h.01"></path><path d="M8 14h.01"></path></svg></span>Operational Assumptions</h2>
 
             <div class="subsection-title">Monthly OPEX Structure</div>
             <div class="assumption-box">
@@ -546,7 +574,7 @@
 
         <!-- ONT Activation Assumptions -->
         <div class="section">
-            <h2 class="section-title">📱 ONT Activation & Penetration</h2>
+            <h2 class="section-title"><span class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg></span>ONT Activation & Penetration</h2>
 
             <div class="subsection-title">Monthly Activation Rate</div>
             <div class="assumption-box">
@@ -633,7 +661,7 @@
 
         <!-- Key Metric Calculations -->
         <div class="section">
-            <h2 class="section-title">📊 Key Financial Metrics</h2>
+            <h2 class="section-title"><span class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" x2="12" y1="20" y2="10"></line><line x1="18" x2="18" y1="20" y2="4"></line><line x1="6" x2="6" y1="20" y2="16"></line></svg></span>Key Financial Metrics</h2>
 
             <div class="subsection-title">Operational Breakeven (Monthly)</div>
             <div class="highlight-box">
@@ -715,7 +743,7 @@
 
         <!-- Portfolio Yield Calculation -->
         <div class="section">
-            <h2 class="section-title">🎯 Portfolio Yield (Blended Rate)</h2>
+            <h2 class="section-title"><span class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" x2="16" y1="12" y2="12"></line></svg></span>Portfolio Yield (Blended Rate)</h2>
 
             <div class="subsection-title">Why We Show Blended Portfolio Yield</div>
             <p style="margin-bottom: 15px;">Rather than showing single-project mature yield in Year 1 (misleading), we calculate blended portfolio yield accounting for staggered launches and ramping:</p>
@@ -764,7 +792,7 @@
 
         <!-- Scenario Analysis -->
         <div class="section">
-            <h2 class="section-title">📈 Scenario Analysis Logic</h2>
+            <h2 class="section-title"><span class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"></path><path d="m19 9-5 5-4-4-3 3"></path></svg></span>Scenario Analysis Logic</h2>
 
             <div class="subsection-title">Penetration Rate Sensitivity</div>
             <p style="margin-bottom: 15px;">We model multiple penetration scenarios to show outcomes if activation rates differ from base case (1,100/month):</p>
@@ -822,7 +850,7 @@
 
         <!-- Assumptions Validation -->
         <div class="section">
-            <h2 class="section-title">✅ Assumptions Validation & Sources</h2>
+            <h2 class="section-title"><span class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></span>Assumptions Validation & Sources</h2>
 
             <div class="subsection-title">Conservative Positioning</div>
             <ul class="check-list">
@@ -845,7 +873,7 @@
 
         <!-- Investment Mechanics -->
         <div class="section">
-            <h2 class="section-title">💵 Investment Mechanics</h2>
+            <h2 class="section-title"><span class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg></span>Investment Mechanics</h2>
 
             <div class="subsection-title">Deployment Schedule & Capital Deployment</div>
             <table>
@@ -1061,7 +1089,7 @@
 
         <!-- Sensitivity & Risk -->
         <div class="section">
-            <h2 class="section-title">⚠️ Sensitivity & Risk Factors</h2>
+            <h2 class="section-title"><span class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" x2="12" y1="8" y2="12"></line><line x1="12" x2="12.01" y1="16" y2="16"></line></svg></span>Sensitivity & Risk Factors</h2>
 
             <div class="subsection-title">Base Case Assumptions (Single Project at 80% Penetration)</div>
             <div class="assumption-box">
@@ -1130,7 +1158,7 @@
 
         <!-- Glossary -->
         <div class="section">
-            <h2 class="section-title">📖 Glossary of Terms</h2>
+            <h2 class="section-title"><span class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg></span>Glossary of Terms</h2>
 
             <div class="assumption-box">
                 <strong>ONT (Optical Network Termination)</strong>
@@ -1175,7 +1203,7 @@
 
         <!-- Questions -->
         <div class="section">
-            <h2 class="section-title">❓ Common Questions</h2>
+            <h2 class="section-title"><span class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4M12 8h.01"></path></svg></span>Common Questions</h2>
 
             <div class="subsection-title">Q: How is the R48.3M per-project investment structured?</div>
             <p><strong>A:</strong> R48.3M = R10.3M infrastructure CAPEX + R38.0M working capital. The CAPEX (node R10M + backhaul R0.3M) is invested upfront in month 1 to build the fiber network. The working capital covers contractor payments (R21.6M), ONT hardware (R6M), monthly OPEX (R4M), and safety buffer (R5M) distributed over months 1-10. This allows full project deployment without running out of cash during ramp-up.</p>
@@ -1198,7 +1226,7 @@
 
         <!-- Next Steps -->
         <div class="section">
-            <h2 class="section-title">📎 Related Documents</h2>
+            <h2 class="section-title"><span class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.5 1.5H6a2 2 0 0 0-2 2v3m11-5.5h4.5a2 2 0 0 1 2 2v3M6 5.5a2.121 2.121 0 0 0 3 3M15 5.5a2.121 2.121 0 0 1 3 3M6 12.5a2.121 2.121 0 0 0 3 3M15 12.5a2.121 2.121 0 0 1 3 3"></path></svg></span>Related Documents</h2>
             <div class="highlight-box">
                 <strong>Interactive Financial Models:</strong> <a href="VELOCITY_FINANCIAL_MODELS.html" style="color: var(--accent-burgundy); text-decoration: none; font-weight: 600;">View Financial Models Dashboard</a>
                 <p style="margin-top: 10px; font-size: 14px;">Month-by-month projections, full portfolio scenarios, and penetration sensitivity analysis.</p>

@@ -43,6 +43,23 @@ class CurrencyConverter {
         }
     }
 
+    applyCurrencyPreference() {
+        // Apply stored currency preference on page load
+        const storedCurrency = localStorage.getItem('velocity-currency') || 'ZAR';
+        this.currentCurrency = storedCurrency;
+
+        // Update button states
+        document.querySelectorAll('.currency-toggle-btn').forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.dataset.currency === storedCurrency) {
+                btn.classList.add('active');
+            }
+        });
+
+        // Convert all values to match preference
+        this.convertAllValues();
+    }
+
     setupToggleButtons() {
         const toggleButtons = document.querySelectorAll('.currency-toggle-btn');
         toggleButtons.forEach(btn => {

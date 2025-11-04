@@ -69,25 +69,28 @@ class CurrencyConverter {
         console.log(`[Currency Converter] Found ${toggleButtons.length} toggle buttons`);
         console.log(`[Currency Converter] Setting up click listeners...`);
 
+        // Store reference for use in closures
+        const self = this;
+
         toggleButtons.forEach((btn, index) => {
             console.log(`[Currency Converter] Attaching listener to button ${index} (${btn.dataset.currency})`);
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                const currency = e.target.dataset.currency;
-                console.log(`[Currency Converter] Button clicked - Currency: ${currency}`);
-                this.setCurrency(currency);
-            });
+
+            // Use simpler event handler without preventDefault
+            btn.addEventListener('click', function(e) {
+                const currency = this.dataset.currency;
+                console.log(`[Currency Converter] BUTTON CLICK FIRED - Currency: ${currency}`);
+                self.setCurrency(currency);
+            }, false);
         });
 
-        // Also set up delegation in case buttons are dynamically created
-        document.addEventListener('click', (e) => {
-            if (e.target.classList.contains('currency-toggle-btn')) {
+        // Also set up delegation as fallback
+        document.addEventListener('click', function(e) {
+            if (e.target && e.target.classList && e.target.classList.contains('currency-toggle-btn')) {
                 const currency = e.target.dataset.currency;
-                console.log(`[Currency Converter] Delegation: Button clicked - Currency: ${currency}`);
-                this.setCurrency(currency);
+                console.log(`[Currency Converter] DELEGATION CLICK FIRED - Currency: ${currency}`);
+                self.setCurrency(currency);
             }
-        });
+        }, true); // Use capture phase for better compatibility
     }
 
     setCurrency(currency) {

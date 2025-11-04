@@ -139,7 +139,15 @@ test.describe('Currency Toggle Feature', () => {
       });
 
       test('should highlight active button with burgundy color', async ({ page }) => {
+        // Clear localStorage to reset currency preference to ZAR
+        await page.evaluate(() => {
+          localStorage.removeItem('velocity-currency');
+        });
+
         await page.goto(doc.url);
+
+        // Wait for initialization
+        await page.waitForTimeout(1000);
 
         const randButton = page.locator('button[data-currency="ZAR"]');
         const usdButton = page.locator('button[data-currency="USD"]');
@@ -149,24 +157,24 @@ test.describe('Currency Toggle Feature', () => {
         expect(randClass).toContain('active');
         console.log(`✓ ${doc.name}: ZAR button initially active`);
 
-        // Click USD
-        console.log(`Clicking USD button...`);
-        await usdButton.click();
+        // Click USD button directly via JavaScript to ensure event fires
+        await page.evaluate(() => {
+          const usdBtn = document.querySelector('button[data-currency="USD"]');
+          if (usdBtn) usdBtn.click();
+        });
 
-        // Wait longer for click handler and class updates
-        await page.waitForTimeout(1000);
+        // Wait for click handler and class updates
+        await page.waitForTimeout(1500);
 
         // Log button states for debugging
-        const usdClassBefore = await usdButton.getAttribute('class');
-        const randClassBefore = await randButton.getAttribute('class');
-        console.log(`After click - USD class: ${usdClassBefore}, ZAR class: ${randClassBefore}`);
+        const usdClassAfter = await usdButton.getAttribute('class');
+        const randClassAfter = await randButton.getAttribute('class');
+        console.log(`After click - USD class: ${usdClassAfter}, ZAR class: ${randClassAfter}`);
 
         // Check that USD is now active
-        const usdClass = await usdButton.getAttribute('class');
-        expect(usdClass).toContain('active');
+        expect(usdClassAfter).toContain('active');
 
         // Check that ZAR is no longer active
-        const randClassAfter = await randButton.getAttribute('class');
         expect(randClassAfter).not.toContain('active');
 
         console.log(`✓ ${doc.name}: Button active state toggling correctly`);

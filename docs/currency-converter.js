@@ -22,7 +22,7 @@ class CurrencyConverter {
             const data = await response.json();
 
             if (data && data.rates && data.rates.USD) {
-                this.rarToUsdRate = 1 / data.rates.USD; // ZAR to USD
+                this.rarToUsdRate = data.rates.USD; // ZAR to USD (direct conversion rate)
                 console.log(`Exchange rate (ZAR/USD): 1 ZAR = ${this.rarToUsdRate.toFixed(4)} USD`);
 
                 // Update rate display if element exists
